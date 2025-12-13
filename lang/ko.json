@@ -1,0 +1,30 @@
+{
+  "MRKB": {
+    "Clear": "로그 삭제",
+    "Clock": "시계",
+    "Content": "내용",
+    "Export": "내보내기",
+    "Inventory": "인벤토리",
+    "NewClock": "새 시계",
+    "TalkMode": {
+      "Normal": "일반",
+      "Thinking": "독백",
+      "Call": "통화",
+      "Kakao": "메신저",
+      "Chatting": "채팅",
+      "Reply": "댓글",
+      "Note": "노트",
+      "Monologue": "서술",
+      "Desc": "설명",
+      "RollRequest": "판정요구"
+    },
+    "Notifications": {
+      "FolderIsNull": "모듈 설정에서 폴더를 지정해주십시오.",
+      "FolderIsNone": "아이템 디렉토리에 \"{name}\" 폴더가 존재하지 않습니다."
+    },
+    "Unclassified": "미분류",
+    "Detail": "자세히",
+    "Buy": "구매",
+    "Confirm": "확인"
+  }
+}

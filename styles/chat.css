@@ -1,0 +1,267 @@
+@import url("https://font.elice.io/css?family=Elice+Digital+Coding");
+@import url('https://fonts.googleapis.com/css?family=Black+Han+Sans:400');
+@import url('https://fonts.googleapis.com/css?family=Black+Han+Sans&display=swap&subset=korean');
+
+@import url('https://cdn.jsdelivr.net/npm/galmuri@latest/dist/galmuri.css');
+
+@font-face {
+  font-family: 'NEXON Lv1 Gothic OTF';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXON Lv1 Gothic OTF.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'NEXON Lv1 Gothic OTF Bold';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXON Lv1 Gothic OTF Bold.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face{
+  font-family:'DNFForgedBlade';
+  src:url('//cdn.df.nexon.com/img/common/font/DNFForgedBlade-Light.otf') format('opentype');
+  font-style:normal;
+  font-weight:500;
+}
+@font-face{
+  font-family:'DNFForgedBladeBold';
+  src:url('//cdn.df.nexon.com/img/common/font/DNFForgedBlade-Bold.otf') format('opentype');
+  font-style:normal;
+  font-weight:700;
+}
+@font-face {
+  font-family: 'CHOGOONChickenScratchV2-Medium';
+  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2406-1@1.0/CHOGOONChickenScratchV2-Medium.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'KCCImkwontaek';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2202@1.0/KCCImkwontaek.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'ROEHOE-CHAN';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-10@1.0/ROEHOE-CHAN.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'MYArirang-Medium';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2206-02@1.0/MYArirang-Medium.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'EliceDigitalBaeum_Bold';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_220508@1.0/EliceDigitalBaeum_Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+}
+@import url('https://cdn.jsdelivr.net/npm/galmuri@latest/dist/galmuri.css');
+
+html{
+  --gothic-regular: 'NEXON Lv1 Gothic OTF', serif;
+  --gothic-bold: 'NEXON Lv1 Gothic OTF Bold', serif;
+  --gothic-extra: 'Black Han Sans', serif;
+
+  --mingjo-regular: "DNFForgedBlade", serif;
+  --mingjo-bold: "DNFForgedBladeBold", serif;
+
+  --handwrite-regular: "CHOGOONChickenScratchV2-Medium", serif;
+  --handwrite-bold: "KCCImkwontaek", serif;
+
+  --cursive-regular: "ROEHOE-CHAN", serif;
+  --cursive-bold: "MYArirang-Medium", serif;
+
+  --pixel-regular: "Galmuri9", serif;
+  --pixel-bold: "Galmuri7", serif;
+
+  --font-size: 14px;
+
+  --radius: 5px;
+
+  --sidebar-width: 300px;
+  --sidebar-nav-width: 40px;
+  --bottom-main-height: 50px;
+  --bottom-sub-height: 30px;
+
+  --max-height: 100vh;
+}
+
+.themed.theme-light .chat-message {
+  --heading-color: var(--color-dark-1);
+  --text-color: var(--color-dark-2);
+  --subtitle-color: var(--color-dark-3);
+  --background-color: rgba(255, 255, 255, 0.8);
+}
+
+.themed.theme-dark .chat-message {
+  --heading-color: var(--color-light-1);
+  --text-color: var(--color-light-2);
+  --subtitle-color: var(--color-light-3);
+  --background-color: var(--color-cool-5);
+}
+
+.chat-message.message {
+  flex: none;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  font-size: var(--font-size);
+  background: var(--background-color);
+  padding: 2px 8px;
+  border: 0;
+  border-radius: 0;
+  margin: 0 4px;
+}
+.chat-message.message:not(.added) {
+  padding: 4px 8px 2px 8px;
+  margin-top: 4px;
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+}
+.chat-message.message:has(+ .message:not(.added)),
+.chat-message.message:last-child {
+  padding: 2px 8px 8px 8px;
+  margin-bottom: 4px;
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 6px;
+}
+.chat-message.message:not(.added):not(:has(+ .message.added)) {
+  padding: 4px 8px 8px 8px;
+}
+.chat-message .message-header {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0 5px;
+  margin: 5px 0;
+  z-index: 1;
+}
+.chat-message .message-header img {
+  display: block;
+  width: 36px;
+  height: 36px;
+  flex: none;
+  margin: 0;
+  border: 0;
+  border-radius: 5px;
+}
+.chat-message .message-header .message-sender{
+  flex: 1 1 auto;
+  min-width: 0;
+  height: 36px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: var(--heading-color);
+  font-family: var(--mingjo-bold);
+  font-weight: 600;
+  font-size: calc(var(--font-size) + 2px);
+  line-height: 20px;
+  margin: 0;
+  overflow: hidden;
+}
+.chat-message .message-header .message-sender .message-user {
+  font-size: calc(var(--font-size) - 4px);
+  line-height: 12px;
+  /*color: #aaaaaa;*/
+}
+.chat-message .message-header .flavor-text,
+.chat-message .message-header .whisper-to {
+  flex: none;
+  width: 100%;
+  height: 18px;
+  font-size: calc(var(--font-size) - 2px);
+}
+.chat-message .message-header .message-metadata {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  flex: none;
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  gap: 2px;
+  font-family: var(--gothic-regular);
+  color: var(--subtitle-color);
+  overflow: hidden;
+  text-transform: uppercase;
+  /*text-shadow: 1px 0 black, 0 1px black, -1px 0 black, 0 -1px black;*/
+  white-space: nowrap;
+  transition: all 0.3s;
+  opacity: 0;
+  z-index: 1;
+}
+.chat-message:hover .message-header .message-metadata:hover {
+  opacity: 1;
+}
+.chat-message .message-header .message-metadata .hovertext {
+  display: flex;
+}
+.chat-message .message-header .message-metadata .hovertext:before {
+  display: none;
+}
+.chat-message .message-header .message-metadata .message-times {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 0 5px;
+}
+.chat-message .message-header .message-metadata .message-times time {
+  height: 9px;
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  font-size: calc(var(--font-size) - 5px);
+}
+.chat-message .message-header .message-metadata .message-timestamp,
+.chat-message .message-header .message-metadata .message-timestamps {
+  white-space: nowrap;
+  margin: 0;
+}
+.chat-message .message-header .message-metadata > a {
+  width: 20px;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: calc(var(--font-size) + 2px);
+  background: none;
+}
+.chat-message .message-content {
+  position: relative;
+  font-family: var(--gothic-regular);
+  font-size: var(--font-size);
+  text-indent: 0;
+  line-height: 140%;
+  word-break: break-all;
+  color: var(--text-color);
+}
+
+.chat-message.added {
+}
+.chat-message.added .message-header {
+  flex: none;
+  height: 0;
+  justify-content: flex-end;
+  padding: 0;
+  border: 0;
+  margin: 0;
+}
+.chat-message.added .message-header img {
+  display: none;
+}
+.chat-message.added .message-header .message-sender {
+  display: none;
+}
+.chat-message.added .message-header .message-metadata {
+  height: 18px;
+}
+.chat-message.added .message-content .chat-portrait-flexrow {
+  display: none;
+}

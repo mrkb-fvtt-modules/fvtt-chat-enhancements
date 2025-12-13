@@ -1,0 +1,38 @@
+{
+    "id": "mrkb-chat-enhancements",
+    "title": "MRKB Chat Enhancements",
+    "description": "<p>MRKB's Foundry VTT Chat Enhancements</p>",
+    "version": "1.0.0",
+    "compatibility": {
+        "minimum": "13",
+        "verified": "13.351"
+    },
+    "authors": [
+        {
+            "name": "MRKB",
+            "discord": "mrkb",
+            "flags": {}
+        }
+    ],
+    "relationships": {
+    },
+    "esmodules": [
+        "scripts/main.mjs"
+    ],
+    "styles": [
+        "styles/actorControl.css",
+        "styles/chat.css",
+        "styles/chatEditor.css",
+        "styles/chatExporter.css"
+    ],
+    "languages": [
+        {
+            "lang": "ko",
+            "name": "한국어",
+            "path": "lang/ko.json"
+        }
+    ],
+    "url": "https://github.com/MaronKB/fvtt-chat-enhancements",
+    "manifest": "https://raw.githubusercontent.com/MaronKB/13thagekr/master/module.json",
+    "download": "https://github.com/MaronKB/13thagekr/archive/master.zip"
+}

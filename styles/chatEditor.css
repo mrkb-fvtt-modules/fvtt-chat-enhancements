@@ -1,0 +1,41 @@
+/* default css */
+
+.themed.theme-light #chat-editor {
+    --text-color: var(--color-dark-2);
+    --background-color: rgba(255, 255, 255, 0.6);
+    --border-color: rgba(255, 255, 255, 0.8);
+}
+
+.themed.theme-dark #chat-editor {
+    --text-color: var(--color-light-2);
+    --background-color: var(--color-cool-5);
+    --border-color: var(--color-cool-4);
+}
+
+#chat-editor {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: calc(100% - 8px);
+    height: var(--chat-input-height);
+    font-family: var(--font-body);
+    background-color: var(--background-color);
+    background-size: 30px;
+    background-position: center;
+    background-repeat: no-repeat;
+    border: 2px solid var(--border-color, var(--color-cool-4));
+    padding: var(--chat-message-spacing);
+    margin: 0 4px;
+    resize: none;
+    transition: box-shadow 250ms, outline 250ms;
+}
+
+#chat-editor:focus {
+    outline-color: var(--color-warm-1);
+}
+
+#chat-message.disabled,
+#chat-editor.disabled {
+    pointer-events: none;
+    opacity: 0;
+}

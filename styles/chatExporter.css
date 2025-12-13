@@ -1,0 +1,117 @@
+#chat-exporter {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin: 0 0 5px 0;
+}
+#chat-exporter #export-types {
+    display: flex;
+    gap: 5px;
+}
+#chat-exporter #export-types > div {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 5px;
+    padding : 10px;
+}
+#chat-exporter #export-types > div > h4 {
+    font-size: 16px;
+    font-weight: 600;
+    text-align: center;
+}
+#chat-exporter #export-types > div > p {
+    font-size: 10px;
+    word-break: break-all;
+    text-align: justify-all;
+    margin: 0;
+}
+#chat-exporter #export-css {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    padding : 10px;
+}
+#chat-exporter #export-css > input[type="checkbox"] {
+    flex: none;
+    width: 16px;
+    height: 16px;
+}
+#chat-exporter #export-css > div {
+    flex: 1;
+}
+#chat-exporter #export-css > div > h3 {
+    flex: 1;
+    font-size: 14px;
+    margin: 0;
+}
+#chat-exporter #export-css > div  > p {
+    font-size: 10px;
+    word-break: break-all;
+    text-align: justify-all;
+    margin: 0;
+}
+#chat-exporter #export-url {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding : 10px;
+}
+#chat-exporter #export-url > div {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+#chat-exporter #export-url > div > h3 {
+    flex: none;
+    font-size: 14px;
+}
+#chat-exporter #export-url > div > input {
+    flex: 1;
+    font-size: 12px;
+}
+#chat-exporter #export-url > p {
+    font-size: 10px;
+    word-break: break-all;
+    text-align: justify-all;
+    margin: 0;
+}
+
+.chat-export-pdf {
+    display: none;
+    padding: 0;
+    margin: 0;
+    z-index: 1000;
+}
+
+@media print {
+    body.game {
+        position: static!important;
+        display: block!important;
+        width: auto!important;
+        height: auto!important;
+        overflow: scroll!important;
+    }
+    body.game.theme-light {
+        background: white!important;
+    }
+    body.game.theme-dark {
+        background: black!important;
+    }
+    body.game > *:not(.chat-export-pdf) {
+        display: none!important;
+    }
+    .chat-export-pdf {
+        display: block;
+        overflow: auto;
+    }
+    @page {
+        margin: 0;
+    }
+}

@@ -1,0 +1,312 @@
+.themed.theme-dark #actor-control,
+.themed.theme-dark #actor-favorites {
+    --control-bg-color: var(--color-cool-5-75);
+    --control-border-color: var(--color-cool-4);
+    --control-icon-color: var(--color-light-2);
+    --control-hover-bg-color: var(--color-cool-5);
+    --control-hover-border-color: var(--color-cool-3);
+    --control-hover-icon-color: var(--color-light-1);
+    --control-active-bg-color: var(--color-cool-5);
+    --control-active-border-color: var(--color-warm-2);
+    --control-active-icon-color: var(--color-light-1);
+    --control-button-border-color: var(--color-warm-1);
+    --control-button-hover-bg-color: var(--color-warm-2);
+    --control-button-hover-border-color: var(--color-light-1);
+    --toggle-bg-color: rgba(34, 34, 72, 0.75);
+    --toggle-border-color: #5252d7;
+    --toggle-active-bg-color: #5252d7;
+    --toggle-active-border-color: #8484ff;
+}
+
+.themed.theme-light #actor-control,
+.themed.theme-light #actor-favorites {
+    --control-bg-color: rgba(255, 255, 255, 0.6);
+    --control-border-color: rgba(255, 255, 255, 0.8);
+    --control-icon-color: var(--color-dark-2);
+    --control-hover-bg-color: rgba(255, 255, 255, 0.85);
+    --control-hover-border-color: rgba(255, 255, 255, 0.9);
+    --control-hover-icon-color: var(--color-dark-1);
+    --control-active-bg-color: rgba(255, 255, 255, 0.85);
+    --control-active-border-color: var(--color-warm-2);
+    --control-active-icon-color: var(--color-dark-1);
+    --control-button-border-color: var(--color-warm-1);
+    --control-button-hover-bg-color: var(--color-warm-2);
+    --control-button-hover-border-color: var(--color-light-1);
+    --toggle-bg-color: rgba(255, 255, 255, 0.6);
+    --toggle-border-color: #5252d7;
+    --toggle-active-bg-color: #5252d7;
+    --toggle-active-border-color: #8484ff;
+}
+
+.chat-form {
+    gap: 6px;
+}
+
+#actor-control-container {
+    position: relative;
+    width: 100%;
+}
+
+#actor-control {
+    position: absolute;
+    left: 0;
+    bottom: calc(100% + 10px);
+    width: 100%;
+    height: auto;
+    max-height: calc(100vh - 200px);
+    background: var(--control-bg-color);
+    backdrop-filter: blur(2px);
+    border: 1px solid var(--control-active-border-color);
+    border-radius: 4px;
+    opacity: 0;
+    pointer-events: none;
+    transition: 0.3s all;
+    overflow: hidden;
+    z-index: 90;
+}
+#actor-control.active {
+    bottom: calc(100% + 10px);
+    pointer-events: all;
+    opacity: 1;
+}
+#actor-control #actor-selector-title {
+    width: 100%;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: var(--gothic-bold), sans-serif;
+    font-size: 14px;
+    color: var(--control-icon-color);
+    padding: 0 5px;
+    margin: 0 0 auto 0;
+}
+#actor-control #actor-selector-title:hover {
+    color: white;
+}
+#actor-control #actor-selector-title > i {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 0 0 5px;
+}
+#actor-control #actor-selector-body {
+    flex: 1;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 0;
+    margin: 0;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+#actor-control #actor-selector-body::-webkit-scrollbar-track {
+    display: none;
+}
+#actor-control #actor-selector-body .actor-folder {
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0 10px;
+    margin: 0 0 3px 0;
+    container-name: folder;
+    container-type: inline-size;
+}
+#actor-control #actor-selector-body .actor-folder .actor-header {
+    position: relative;
+    width: 100%;
+    height: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 13px;
+    list-style: none;
+    color: var(--control-icon-color);
+    background: var(--control-bg-color);
+    padding: 0 40px;
+    border-radius: var(--radius);
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+#actor-control #actor-selector-body .actor-folder .actor-header:hover {
+    color: var(--control-hover-icon-color);
+    background: var(--control-hover-bg-color);
+}
+#actor-control #actor-selector-body .actor-folder.active .actor-header {
+    color: var(--control-active-icon-color);
+    background: var(--control-active-bg-color);
+    margin: 0 0 5px 0;
+}
+#actor-control #actor-selector-body .actor-folder .actor-header::before {
+    position: absolute;
+    left: 15px;
+    flex: none;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    content: "\f07b";
+    font-family: "Font Awesome 6 Pro", serif;
+    font-size: 14px;
+}
+#actor-control #actor-selector-body .actor-folder.active .actor-header::before {
+    content: "\f07c";
+}
+#actor-control #actor-selector-body .actor-folder .actor-grid {
+    width: 100%;
+    height: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
+    grid-auto-rows: auto;
+    justify-content: center;
+    gap: 3px;
+    margin: 0;
+    overflow: hidden;
+}
+#actor-control #actor-selector-body .actor-folder .actor-grid::-webkit-scrollbar-track {
+    display: none;
+}
+#actor-control #actor-selector-body .actor-folder.active .actor-grid {
+    height: fit-content;
+}
+#actor-control #actor-selector-body .actor-folder .actor-grid .actor-icon {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3px;
+    background: var(--control-bg-color);
+    padding: 5px;
+    border-radius: var(--radius);
+}
+#actor-control #actor-selector-body .actor-folder .actor-grid .actor-icon.active {
+    background: var(--control-active-bg-color);
+}
+#actor-control #actor-selector-body .actor-folder .actor-grid .actor-icon input {
+    display: none;
+}
+#actor-control #actor-selector-body .actor-folder .actor-grid .actor-icon input + label {
+    position: absolute;
+    right: 0;
+    top: 0;
+    color: grey;
+    pointer-events: none;
+    z-index: 1;
+}
+#actor-control #actor-selector-body .actor-folder .actor-grid .actor-icon input:checked + label {
+    color: white;
+}
+#actor-control #actor-selector-body .actor-folder .actor-grid .actor-icon img {
+    flex: none;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 8px;
+    transition: 0.3s all;
+}
+#actor-control #actor-selector-body .actor-folder .actor-grid .actor-icon img {
+    filter: grayscale(80%) brightness(0.7);
+}
+#actor-control #actor-selector-body .actor-folder .actor-grid .actor-icon:hover img,
+#actor-control #actor-selector-body .actor-folder .actor-grid .actor-icon.active img {
+    filter: none;
+}
+#actor-control #actor-selector-body .actor-folder .actor-grid .actor-icon h4 {
+    flex: none;
+    width: 100%;
+    height: 15px;
+    font-size: 11px;
+    line-height: 16px;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: var(--control-icon-color);
+    padding: 0 5px;
+    border-radius: 2px;
+    margin: 0;
+}
+#actor-control #actor-selector-body .actor-folder .actor-grid .actor-icon:hover h4 {
+    color: var(--control-hover-icon-color);
+}
+#actor-control #actor-selector-body .actor-folder .actor-grid .actor-icon.active h4 {
+    color: var(--control-active-icon-color);
+}
+#actor-control #actor-selector-tooltip {
+    width: 20px;
+    height: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    font-size: 16px;
+    line-height: 14px;
+    color: var(--control-icon-color);
+    padding: 0 10px;
+    border-radius: 10px;
+    margin: 5px 5px 5px auto;
+}
+
+
+
+#actor-favorites {
+    display: flex;
+    gap: 4px;
+    padding: 0;
+}
+#favorites {
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+    gap: 4px;
+    padding: 0;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    transition: 0.3s all;
+    scrollbar-width: none;
+}
+#actor-favorites::-webkit-scrollbar {
+    display: none;
+}
+#actor-favorites .actor-icon {
+    position: relative;
+    flex: none;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--control-icon-color);
+    background: var(--control-bg-color);
+    border: 1px solid var(--control-border-color);
+    border-radius: 4px;
+    overflow: hidden;
+    cursor: pointer;
+}
+#actor-favorites .actor-icon:hover {
+    color: var(--control-hover-icon-color);
+    background: var(--control-hover-bg-color);
+    border-color: var(--control-hover-border-color);
+}
+#actor-favorites .actor-icon.active {
+    color: var(--control-active-icon-color);
+    background: var(--control-active-bg-color);
+    border-color: var(--control-active-border-color);
+}
+#actor-favorites .actor-icon input,
+#actor-favorites .actor-icon label,
+#actor-favorites .actor-icon h4 {
+    display: none;
+}
+#actor-favorites .actor-icon img {
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+    object-fit: cover;
+}
