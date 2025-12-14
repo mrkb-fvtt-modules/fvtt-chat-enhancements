@@ -2,7 +2,7 @@
     "id": "mrkb-chat-enhancements",
     "title": "MRKB Chat Enhancements",
     "description": "<p>MRKB's Foundry VTT Chat Enhancements</p>",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "compatibility": {
         "minimum": "13",
         "verified": "13.351"
@@ -30,6 +30,16 @@
             "lang": "ko",
             "name": "한국어",
             "path": "lang/ko.json"
+        },
+        {
+            "lang": "ja",
+            "name": "日本語",
+            "path": "lang/ja.json"
+        },
+        {
+            "lang": "en",
+            "name": "English",
+            "path": "lang/en.json"
         }
     ],
     "url": "https://github.com/MaronKB/fvtt-chat-enhancements",

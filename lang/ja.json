@@ -1,0 +1,19 @@
+{
+    "MRKB": {
+        "ActorControl": "アクターコントロール",
+        "ActorClear": "アクターをクリア (OOC)",
+        "ActorSelector": "アクターセレクター",
+        "ActorSelectorTooltip": "[左クリック]: アクターを変更<br/>[右クリック]: お気に入りに追加 / 削除<br/>[Ctrl + 左クリック]: シートを開く",
+        "Edit": "編集",
+        "ExportToHTML": "HTMLにエクスポート",
+        "ExportToPDF": "PDFにエクスポート",
+        "IncludeCSS": "エクスポートにCSSを含める",
+        "IncludeCSSTooltip": "HTMLファイルにCSSインポートが必要な場合はチェックしてください。単一ファイルでもフォーマットが維持されるようにします。別の環境でCSSを使用している場合はチェックしないでください。",
+        "OrderFlag": "オーダーフラグ",
+        "OrderFlagTooltip": "メッセージ作成時にメッセージリストに基づいて相対的に設定されるOrder Flagに従ってメッセージをソートしてエクスポートします。場合によっては利用できないことがあります。",
+        "OpenActorSelector": "アクターセレクターを開く",
+        "Timestamp": "タイムスタンプ",
+        "TimestampTooltip": "メッセージ作成時にクライアント時間に基づいて設定されるTimestampに従ってメッセージをソートしてエクスポートします。個人のコンピュータの時間に誤差がある場合、順序が混在する可能性があります。",
+        "Unclassified": "未分類"
+    }
+}

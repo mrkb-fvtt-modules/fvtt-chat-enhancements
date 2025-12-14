@@ -3,20 +3,20 @@ import {MODULE_PATH} from "./constants.mjs";
 export default class ChatExporter {
     static exporter() {
         const orderHeader = document.createElement("h4");
-        orderHeader.innerHTML = "오더 플래그";
+        orderHeader.innerHTML = game.i18n.localize("MRKB.OrderFlag");
 
         const orderMsg = document.createElement("p");
-        orderMsg.innerHTML = "메시지 생성 시에 메시지 목록에 따라 상대적으로 설정되는 Order Flag에 따라 메시지를 정렬하여 내보냅니다. 경우에 따라 사용이 불가능할 수 있습니다.";
+        orderMsg.innerHTML = game.i18n.localize("MRKB.OrderFlagTooltip");
 
         const order = document.createElement("div");
         order.id = "export-as-order";
         order.append(orderHeader, orderMsg);
 
         const timestampHeader = document.createElement("h4");
-        timestampHeader.innerHTML = "타임 스탬프";
+        timestampHeader.innerHTML = game.i18n.localize("MRKB.Timestamp");
 
         const timestampMsg = document.createElement("p");
-        timestampMsg.innerHTML = "메시지 생성 시에 클라이언트 시간에 따라 설정되는 Timestamp에 따라 메시지를 정렬하여 내보냅니다. 개인 컴퓨터의 시간에 오차가 있을 경우 순서가 섞일 수 있습니다.";
+        timestampMsg.innerHTML = game.i18n.localize("MRKB.TimestampTooltip");
 
         const timestamp = document.createElement("div");
         timestamp.id = "export-as-timestamp";
@@ -32,10 +32,10 @@ export default class ChatExporter {
         includeCSS.id = "include-css";
 
         const CSSH3 = document.createElement("h3");
-        CSSH3.innerHTML = "HTML에 CSS 포함"
+        CSSH3.innerHTML = game.i18n.localize("MRKB.IncludeCSS");
 
         const CSSP = document.createElement("p");
-        CSSP.innerHTML = "HTML 파일에 CSS 임포트가 필요할 경우 체크합니다. 단일 파일로도 양식이 유지되도록 합니다. 별도의 환경에서 CSS를 사용하고 있다면 체크하지 마십시오."
+        CSSP.innerHTML = game.i18n.localize("MRKB.IncludeCSSTooltip");
 
         const CSSDiv = document.createElement("div");
         CSSDiv.append(CSSH3, CSSP);
@@ -45,57 +45,28 @@ export default class ChatExporter {
         CSS.htmlFor = "include-css";
         CSS.append(includeCSS, CSSDiv);
 
-        const urlHeader = document.createElement("h3");
-        urlHeader.innerHTML = "URL :"
-
-        const urlInput = document.createElement("input");
-        urlInput.type = "text";
-        urlInput.name = "url";
-        urlInput.placeholder = window.location.origin;
-        urlInput.id = "export-url-input";
-
-        // const urlBody = document.createElement("div");
-        // urlBody.append(urlHeader, urlInput);
-        //
-        // const urlP = document.createElement("p");
-        // urlP.innerHTML = "포트레이트 이미지를 별도의 서버에서 호스팅해야 하는 경우(예 : FVTT 서버를 개인 컴퓨터에서 호스트 중임), 해당 이미지서버의 주소를 입력합니다. api url에 쿼리스트링을 입력했을 때 아래의 \"이미지 다운로드\" 버튼으로 내려받은 이미지가 표시되도록 하십시오."
-        //
-        // const url = document.createElement("div");
-        // url.id = "export-url";
-        // url.append(urlBody, urlP);
-
         const exporterForm = document.createElement("form");
         exporterForm.id = "chat-exporter";
-        exporterForm.append(types, CSS/*, url*/);
+        exporterForm.append(types, CSS);
 
         const exporter = new Dialog({
             title: `Chat Exporter`,
             content: exporterForm.outerHTML,
             buttons: {
                 order: {
-                    label: "오더 플래그",
+                    label: game.i18n.localize("MRKB.OrderFlag"),
                     callback: () => {
                         const css = document.querySelector("#chat-exporter")?.css?.checked;
-                        //const url = document.querySelector("#chat-exporter")?.url?.value;
-                        this.exportHTML(true, css/*, url*/)
+                        this.exportHTML(true, css)
                     }
                 },
                 timestamp: {
-                    label: "타임 스탬프",
+                    label: game.i18n.localize("MRKB.Timestamp"),
                     callback: () => {
                         const css = document.querySelector("#chat-exporter")?.css?.checked;
-                        const url = document.querySelector("#chat-exporter")?.url?.value;
-                        this.exportHTML(false, css, url)
+                        this.exportHTML(false, css)
                     }
                 },
-                /*
-                image: {
-                    label: "이미지 다운로드",
-                    callback: () => {
-                    }
-                },
-
-                 */
                 cancel: {
                     label: "취소"
                 }
@@ -117,7 +88,7 @@ export default class ChatExporter {
             se : String(date.getSeconds()).padStart(2, '0')
         }
     }
-    static createHTML(callback, isOrdered, css, url) {
+    static createHTML(callback, isOrdered, css) {
         const messagesTemp = game.messages.contents;
         const option = isOrdered ? (a, b) => {
             let prev = a.flags["mrkb-chat-enhancements"]?.order;
@@ -133,31 +104,18 @@ export default class ChatExporter {
         const firstMessageDate = messagesTemp[0].timestamp;
         const list = [];
         let index = 0;
-        const imgIsPortrait = (img) => {
-            return img.classList.contains("message-portrait")
-                || img.classList.contains("chat-portrait")
-                || img.parentElement.classList.contains("avatar")
-                || img.classList.contains("chat-portrait-message-portrait-" + game.system.id);
-        }
+
         messages.forEach((e) => {
             e.exporting = true;
-            e.getHTML().then((i) => {
-                if (!i[0]) {
+            e.renderHTML().then((i) => {
+                if (!i) {
                     index++;
                     return;
                 }
-                const image = i[0]?.querySelectorAll("img");
-                image.forEach((img) => {
-                    if (url && imgIsPortrait(img)) {
-                        const src = img.src.split("/");
-                        const image = src[src.length - 1];
-                        const address = (url[url.length - 1] === "/") ? url.substring(0, url.length - 1) : url;
-                        img.setAttribute("src", address + "/" + image);
-                    }
-                    else img.setAttribute("src", img.src);
-                });
+                const image = i?.querySelectorAll("img");
+                image.forEach((img) => img.setAttribute("src", img.src));
 
-                list.push(i[0]);
+                list.push(i);
 
                 if (index === messages.length - 1) {
                     if (isOrdered) list.sort((a, b) => {
@@ -174,7 +132,7 @@ export default class ChatExporter {
         });
     }
 
-    static exportHTML(order = false, css = false, url = "") {
+    static exportHTML(order = false, css = false) {
         try {
             ChatExporter.createHTML((list, firstMessageDate, css) => {
                 const ol = document.createElement("ol");
@@ -238,7 +196,7 @@ export default class ChatExporter {
 
                 a.click();
                 window.URL.revokeObjectURL(fileUrl);
-            }, order, css, url);
+            }, order, css);
         } catch (err) {
             //debug("Exporting Log", err, true);
         }

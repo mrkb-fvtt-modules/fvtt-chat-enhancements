@@ -16,7 +16,7 @@ export default class ActorControl {
     static _createSelector() {
         const title = document.createElement("a");
         title.id = "actor-selector-title";
-        title.innerHTML = "Actor Selector<i class=\"fa-solid fa-arrows-rotate\"></i>";
+        title.innerHTML = game.i18n.localize("MRKB.ActorSelector") + "<i class=\"fa-solid fa-arrows-rotate\"></i>";
         title.onclick = () => ActorControl._refresh();
 
         const body = this._createSelectorBody();
@@ -24,7 +24,7 @@ export default class ActorControl {
         const tooltip = document.createElement("p");
         tooltip.id = "actor-selector-tooltip";
         tooltip.innerHTML = "<i class=\"fa-solid fa-circle-info\"></i>"
-        tooltip.dataset.tooltip = "[좌클릭] : 액터 변경<br/>[우클릭] : 즐겨찾기 추가 / 삭제<br/>[Ctrl+좌클릭] : 시트 열기";
+        tooltip.dataset.tooltip = game.i18n.localize("MRKB.ActorSelectorTooltip");
 
         const div = document.createElement("div");
         div.id = "actor-control";
@@ -53,7 +53,7 @@ export default class ActorControl {
         openSelector.className = "actor-icon icon fa-solid fa-folder";
         if (InterfaceToggle.get("actor")) openSelector.classList.add("active");
         openSelector.onclick = () => InterfaceToggle.set("actor");
-        openSelector.dataset.tooltip = "액터 선택기 열기";
+        openSelector.dataset.tooltip = game.i18n.localize("MRKB.OpenActorSelector");
         openSelector.dataset.widget = "actor";
 
         favoriteBar.append(openSelector, this._createFavoritesHTML());
@@ -69,7 +69,7 @@ export default class ActorControl {
         reset.className = "actor-icon";
         if (game.user.character === null) reset.classList.add("active");
         reset.onclick = () => this._reset();
-        reset.dataset.tooltip = "액터 초기화";
+        reset.dataset.tooltip = game.i18n.localize("MRKB.ActorClear");
         reset.append(img);
 
         const colScroll = (e, target) => {

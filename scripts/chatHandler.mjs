@@ -2,8 +2,92 @@ import Setting from "./setting.mjs";
 import ChatExporter from "./chatExporter.mjs";
 import ChatEditor from "./chatEditor.mjs";
 import getPortrait from "./getPortrait.mjs";
+import {parse} from "./markdownParser.mjs";
+import ActorControl from "./actorControl.mjs";
 
 export default class ChatHandler {
+    static parseSlashCommand(content) {
+        const raw = content.trim().slice(1).trim();
+        if (!raw) return { command: "", args: [], rest: "" };
+        const parts = raw.split(/\s+/);
+        const command = parts.shift();
+        const args = parts;
+        const rest = args.join(" ");
+        return { command, args, content };
+    }
+    static chatProcessor(chatLog, message, sender) {
+        const reject = (msg = "권한이 없습니다.") => {
+            ui.notifications.error(msg);
+        }
+        const getTargetActor = (args) => {
+            let targetActor, content;
+            
+            args.reduce((acc, cur, idx) => {
+                acc += " " + cur;
+                const actor = game.actors.getName(acc.trim());
+                if (actor) {
+                    targetActor = actor;
+                    content = args.slice(idx + 1).join(" ");
+                }
+                return acc;
+            }, "");
+
+            return { targetActor, content };
+        }
+        if (message.trim().startsWith("/")) {
+            const { command, args, rest} = this.parseSlashCommand(message);
+            if (command === "desc" || command === "description") {
+                ChatMessage.create({
+                    type : 0,
+                    speaker : sender.speaker,
+                    content : rest
+                }, {
+                    mrkbdesc : true
+                });
+                return false;
+            } else if (command === "turn") {
+                if (!game.user.isGM) {
+                    reject();
+                    return false;
+                }
+                ChatMessage.create({
+                    type : 0,
+                    speaker : sender.speaker,
+                    content : rest
+                }, {
+                    mrkbturn : true
+                });
+                return false;
+            } else if (command === "as") {
+                const {targetActor, content} = getTargetActor(args);
+                if (!targetActor) {
+                    ui.notifications.error("해당 이름의 캐릭터를 찾을 수 없습니다.");
+                    return false;
+                }
+                ChatMessage.create({
+                    type : 0,
+                    speaker : {
+                        actor : targetActor.id,
+                        alias : targetActor.name
+                    },
+                    content : content
+                });
+                return false;
+            } else if (command === "act" || command === "actor") {
+                const targetActor = getTargetActor(args).targetActor;
+                if (!targetActor) {
+                    ui.notifications.error("해당 이름의 캐릭터를 찾을 수 없습니다.");
+                    return false;
+                }
+                if (!targetActor.hasPlayerOwner && !game.user.isGM) {
+                    ui.notifications.error("해당 캐릭터는 플레이어가 소유하고 있지 않습니다.");
+                    return false;
+                }
+                ActorControl._select(targetActor.id);
+                return false;
+            }
+        }
+    }
     static preProcesser(message, source, options/*, id*/) {
         if (!message.isAuthor) return;
 
@@ -20,13 +104,7 @@ export default class ChatHandler {
         if (options.mrkbturn) chatType = "turn";
         if (options.mrkbdesc) chatType = "description";
 
-        let con = message.content;
-
-        con = con.replace(/\*\*(.*)\*\*/g,"<b>$1</b>");
-        con = con.replace(/\*(.*)\*/g,"<i>$1</i>");
-        con = con.replace(/( )(?![^<]*>|[^<>]*<)/g,"&nbsp;");
-
-        if (chatType === "chatting") con = `<span class="message-content-speaker">${speaker.alias ?? game.user.name}</span>${con}`;
+        let con = parse(message.content);
 
         if (chatType === "eas") speaker.alias = "긴급 재난 문자";
 
@@ -55,7 +133,7 @@ export default class ChatHandler {
             style : style,
             speaker : speaker,
             content : con,
-            flags : options.isRestoring ? source.flags : {"mrkb-chat-enhancements" : option}
+            flags : {"mrkb-chat-enhancements" : option}
         });
     }
     static isFamily(parent, child, speaker, options) {
@@ -84,7 +162,7 @@ export default class ChatHandler {
             portrait.src = actorImage;
             portrait.className = "message-portrait";
 
-            const header = html[0].querySelector(".message-header");
+            const header = html.querySelector(".message-header");
             header.prepend(portrait);
         }
 
@@ -95,16 +173,16 @@ export default class ChatHandler {
         absTime.className = "message-absolute-timestamp";
         absTime.innerHTML = time;
 
-        const timestamp = html[0].querySelector(".message-timestamp");
+        const timestamp = html.querySelector(".message-timestamp");
 
         const times = document.createElement("div");
         times.className = "message-times";
         times.append(absTime, timestamp);
 
-        const metadata = html[0].querySelector(".message-metadata");
+        const metadata = html.querySelector(".message-metadata");
         metadata.prepend(times);
 
-        const sender = html[0].querySelector("h4.message-sender");
+        const sender = html.querySelector("h4.message-sender");
         sender.innerHTML += `<span class="message-user">${message.author?.name ?? "Deleted User"}</span>`;
 
         if (message.isAuthor || game.user.isGM) {
@@ -113,6 +191,13 @@ export default class ChatHandler {
             a.onclick = () => ChatEditor._edit(message.id);
             a.innerHTML = `<i class="fa-solid fa-pen-to-square"></i>`;
             times.after(a);
+        }
+        if (message.isAuthor && !game.user.isGM) {
+            const a = document.createElement("a");
+            a.classList.add("message-delete");
+            a.onclick = () => message.delete();
+            a.innerHTML = `<i class="fa-solid fa-trash"></i>`;
+            metadata.append(a);
         }
         ChatHandler.checkChatFlag(message, html);
     }
@@ -136,11 +221,11 @@ export default class ChatHandler {
         imgs.forEach((e) => e.remove());
     }
     static checkChatFlag(message, html) {
-        html[0].dataset.order = message.getFlag("mrkb-chat-enhancements", "order");
-        html[0].classList.add(message.getFlag("mrkb-chat-enhancements", "type") ?? "");
+        html.dataset.order = message.getFlag("mrkb-chat-enhancements", "order");
+        html.classList.add(message.getFlag("mrkb-chat-enhancements", "type") ?? "");
 
-        if (message.getFlag("mrkb-chat-enhancements", "added")) html[0].classList.add("added");
-        if (message.isAuthor) html[0].classList.add("self");
+        if (message.getFlag("mrkb-chat-enhancements", "added")) html.classList.add("added");
+        if (message.isAuthor) html.classList.add("self");
     }
     static fixChatFlag() {
         if (game.messages.size === 0) return;

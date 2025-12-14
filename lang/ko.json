@@ -1,30 +1,19 @@
 {
   "MRKB": {
-    "Clear": "로그 삭제",
-    "Clock": "시계",
-    "Content": "내용",
-    "Export": "내보내기",
-    "Inventory": "인벤토리",
-    "NewClock": "새 시계",
-    "TalkMode": {
-      "Normal": "일반",
-      "Thinking": "독백",
-      "Call": "통화",
-      "Kakao": "메신저",
-      "Chatting": "채팅",
-      "Reply": "댓글",
-      "Note": "노트",
-      "Monologue": "서술",
-      "Desc": "설명",
-      "RollRequest": "판정요구"
-    },
-    "Notifications": {
-      "FolderIsNull": "모듈 설정에서 폴더를 지정해주십시오.",
-      "FolderIsNone": "아이템 디렉토리에 \"{name}\" 폴더가 존재하지 않습니다."
-    },
-    "Unclassified": "미분류",
-    "Detail": "자세히",
-    "Buy": "구매",
-    "Confirm": "확인"
+    "ActorControl": "액터 컨트롤",
+    "ActorClear": "액터 비우기 (OOC)",
+    "ActorSelector": "액터 셀렉터",
+    "ActorSelectorTooltip": "[좌클릭] : 액터 변경<br/>[우클릭] : 즐겨찾기 추가 / 삭제<br/>[Ctrl+좌클릭] : 시트 열기",
+    "Edit": "수정",
+    "ExportToHTML": "HTML로 내보내기",
+    "ExportToPDF": "PDF로 내보내기",
+    "IncludeCSS": "내보내기에 CSS 포함",
+    "IncludeCSSTooltip": "HTML 파일에 CSS 임포트가 필요할 경우 체크합니다. 단일 파일로도 양식이 유지되도록 합니다. 별도의 환경에서 CSS를 사용하고 있다면 체크하지 마십시오.",
+    "OrderFlag": "오더 플래그",
+    "OrderFlagTooltip": "메시지 생성 시에 메시지 목록에 따라 상대적으로 설정되는 Order Flag에 따라 메시지를 정렬하여 내보냅니다. 경우에 따라 사용이 불가능할 수 있습니다.",
+    "OpenActorSelector": "액터 셀렉터 열기",
+    "Timestamp": "타임스탬프",
+    "TimestampTooltip": "메시지 생성 시에 클라이언트 시간에 따라 설정되는 Timestamp에 따라 메시지를 정렬하여 내보냅니다. 개인 컴퓨터의 시간에 오차가 있을 경우 순서가 섞일 수 있습니다.",
+    "Unclassified": "미분류"
   }
 }

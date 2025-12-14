@@ -5,13 +5,13 @@ export default class ControlButtons {
         const exportToHTMLButton = this._createButton(
             "export-to-html",
             "file-arrow-down",
-            "HTML로 내보내기",
+            game.i18n.localize("MRKB.ExportToHTML"),
             this.exportToHTML
         );
         const exportToPDFButton = this._createButton(
             "export-to-pdf",
             "file-pdf",
-            "PDF로 내보내기",
+            game.i18n.localize("MRKB.ExportToPDF"),
             this.exportToPDF
         );
 

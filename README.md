@@ -10,11 +10,11 @@ You can merge messages chatted by the same actor and display them.
 
 ### 채팅 수정 Chat edit
 
-발송한 채팅 메시지를 수정할 수 있습니다. 채팅 폼에서 위 방향키(↑)를 눌러 마지막으로 보낸 메시지를 불러오거나, 로그에서 메시지 우측 상단의 연필 아이콘을 클릭하여 수정할 수 있습니다.
+발송한 채팅 메시지를 수정할 수 있습니다. 채팅 폼에서 위 방향키(↑)를 눌러 마지막으로 보낸 메시지를 불러오거나, 로그에서 메시지 우측 상단의 연필 아이콘을 클릭하여 수정할 수 있습니다. 컨텍스트 메뉴에서도 수정 기능을 사용할 수 있습니다.
 
-You can edit sent chat messages. You can press the up arrow key (↑) in the chat form to retrieve the last sent message, or click the pencil icon at the top right of the message in the log to edit it.
+You can edit sent chat messages. You can press the up arrow key (↑) in the chat form to retrieve the last sent message, or click the pencil icon at the top right of the message in the log to edit it. You can also use the edit function in the context menu.
 
-### 액터 선택자 Actor selector
+### 액터 셀렉터 Actor selector
 
 토큰 없이 액터를 선택하고 그 액터로 메시지를 보낼 수 있게 합니다. 액터 즐겨찾키 바의 맨 왼쪽 아이콘을 클릭하여 액터 선택 창을 열 수 있습니다.
 
@@ -44,6 +44,32 @@ You can export chats in HTML or PDF format. When exporting to HTML, you can choo
 
 Sends a notification when a specific actor's turn begins.
 
+### 인라인 마크다운 Inline markdown
+
+이미지, 링크, 헤딩, 기울임, 굵기, 취소선, 인용구 등의 표현을 지원합니다. 문법은 표준 마크다운 문법과 동일합니다.
+
+Supports expressions such as images, links, headings, italics, bold, strikethroughs, and blockquotes. The syntax is the same as standard markdown syntax.
+
+### 채팅 명령어 Chat commands
+
+이하의 명령어를 지원합니다.
+
+- /description(/desc) [내용] : 서술용 메시지를 출력합니다.
+- /as [액터 이름] [내용] : 지정한 액터로 메시지를 보냅니다.
+- /actor(/act) [액터 이름] : 현재 선택된 액터를 지정한 액터로 변경합니다.
+
+The following commands are supported.
+
+- /description(/desc) [content] : Outputs a descriptive message.
+- /as [actor name] [content] : Sends a message as the specified actor.
+- /actor(/act) [actor name] : Changes the currently selected actor to the specified actor.
+
+### 다국어 지원 Multilingual support
+
+한국어, 영어, 일본어를 지원합니다.
+
+Supports Korean, English, and Japanese.
+
 ## 지원 예정 Upcoming features
 
 ### 채팅 모드 Chat mode
@@ -51,12 +77,6 @@ Sends a notification when a specific actor's turn begins.
 독백, 통화, 메신저, 댓글, 툴팁, 긴급재난문자, 판정요구, 서술 모드 지원.
 
 Supports monologue, call, messenger, comment, tooltip, emergency disaster text, judgment request, and narration modes.
-
-### 인라인 마크다운 Inline markdown
-
-마크다운 파싱.
-
-Markdown parsing.
 
 ### 메모 Memo
 
@@ -69,12 +89,6 @@ Select a specific chat message and add it as a memo.
 발언권, 또는 별도의 이유로 시간을 받아야 할 때 신호 전송.
 
 You can send a signal when you need to take time for speaking rights or other reasons.
-
-### 다국어 지원 Multilingual support
-
-영어, 일본어 지원.
-
-Supports English and Japanese.
 
 ## 알려진 문제 Known issues
 

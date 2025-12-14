@@ -1,0 +1,19 @@
+{
+    "MRKB": {
+        "ActorControl": "Actor Control",
+        "ActorClear": "Clear Actor (OOC)",
+        "ActorSelector": "Actor Selector",
+        "ActorSelectorTooltip": "[Left Click]: Change Actor<br/>[Right Click]: Add / Remove Favorite<br/>[Ctrl + Left Click]: Open Sheet",
+        "Edit": "Edit",
+        "ExportToHTML": "Export to HTML",
+        "ExportToPDF": "Export to PDF",
+        "IncludeCSS": "Include CSS in Export",
+        "IncludeCSSTooltip": "Check this if the CSS import is required in the HTML file. This ensures that the formatting is preserved in a single file. Do not check this if you are using CSS in a separate environment.",
+        "OrderFlag": "Order Flag",
+        "OrderFlagTooltip": "Exports messages sorted by the Order Flag, which is set relatively according to the message list when the message is created. May not be available in some cases.",
+        "OpenActorSelector": "Open Actor Selector",
+        "Timestamp": "Timestamp",
+        "TimestampTooltip": "Exports messages sorted by the Timestamp, which is set according to the client time when the message is created. The order may be mixed if there is a discrepancy in the time of the personal computer.",
+        "Unclassified": "Unclassified"
+    }
+}
