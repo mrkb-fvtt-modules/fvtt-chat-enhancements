@@ -1,12 +1,14 @@
 /* default css */
 
-.themed.theme-light #chat-editor {
+.themed.theme-light #chat-editor,
+.themed.theme-light #chat-editor-placeholder {
     --text-color: var(--color-dark-2);
     --background-color: rgba(255, 255, 255, 0.6);
     --border-color: rgba(255, 255, 255, 0.8);
 }
 
-.themed.theme-dark #chat-editor {
+.themed.theme-dark #chat-editor,
+.themed.theme-dark #chat-editor-placeholder {
     --text-color: var(--color-light-2);
     --background-color: var(--color-cool-5);
     --border-color: var(--color-cool-4);
@@ -20,18 +22,30 @@
     height: var(--chat-input-height);
     font-family: var(--font-body);
     background-color: var(--background-color);
-    background-size: 30px;
-    background-position: center;
-    background-repeat: no-repeat;
     border: 2px solid var(--border-color, var(--color-cool-4));
     padding: var(--chat-message-spacing);
     margin: 0 4px;
     resize: none;
     transition: box-shadow 250ms, outline 250ms;
 }
-
 #chat-editor:focus {
     outline-color: var(--color-warm-1);
+}
+
+#chat-editor-placeholder {
+    position: absolute;
+    left: 0;
+    bottom: 10px;
+    width: 100%;
+    font-size: 12px;
+    text-align: center;
+    color: var(--text-color);
+    opacity: 0.6;
+    pointer-events: none;
+    transition: opacity 150ms;
+}
+#chat-editor.disabled + #chat-editor-placeholder {
+    opacity: 0;
 }
 
 #chat-message.disabled,

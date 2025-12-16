@@ -4,6 +4,7 @@
         "ActorClear": "アクターをクリア (OOC)",
         "ActorSelector": "アクターセレクター",
         "ActorSelectorTooltip": "[左クリック]: アクターを変更<br/>[右クリック]: お気に入りに追加 / 削除<br/>[Ctrl + 左クリック]: シートを開く",
+        "ChatEditPlaceholder": "編集モード: [Enter]で保存、[Esc]でキャンセル",
         "Edit": "編集",
         "ExportToHTML": "HTMLにエクスポート",
         "ExportToPDF": "PDFにエクスポート",

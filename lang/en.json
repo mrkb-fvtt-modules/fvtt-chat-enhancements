@@ -4,6 +4,7 @@
         "ActorClear": "Clear Actor (OOC)",
         "ActorSelector": "Actor Selector",
         "ActorSelectorTooltip": "[Left Click]: Change Actor<br/>[Right Click]: Add / Remove Favorite<br/>[Ctrl + Left Click]: Open Sheet",
+        "ChatEditPlaceholder": "Edit Mode: [Enter] to Save, [Esc] to Cancel",
         "Edit": "Edit",
         "ExportToHTML": "Export to HTML",
         "ExportToPDF": "Export to PDF",

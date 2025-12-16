@@ -4,6 +4,7 @@
     "ActorClear": "액터 비우기 (OOC)",
     "ActorSelector": "액터 셀렉터",
     "ActorSelectorTooltip": "[좌클릭] : 액터 변경<br/>[우클릭] : 즐겨찾기 추가 / 삭제<br/>[Ctrl+좌클릭] : 시트 열기",
+    "ChatEditPlaceholder": "수정 모드 : [Enter] 저장, [Esc] 취소",
     "Edit": "수정",
     "ExportToHTML": "HTML로 내보내기",
     "ExportToPDF": "PDF로 내보내기",

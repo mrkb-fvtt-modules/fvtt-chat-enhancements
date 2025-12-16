@@ -2,15 +2,18 @@ import {ASSETS_PATH} from "./constants.mjs";
 
 export default class ChatEditor {
     static initialize() {
+        const placeholder = document.createElement("div");
+        placeholder.id = "chat-editor-placeholder";
+        placeholder.innerHTML = "<i class=\"fa-solid fa-pen-to-square\"></i>" + game.i18n.localize("MRKB.ChatEditPlaceholder");
+
         const editor = document.createElement("textarea");
         editor.id = "chat-editor";
         editor.autocomplete = "off";
         editor.classList.add("disabled");
-        editor.style.backgroundImage = `url(${ASSETS_PATH}/icon/edit.png)`;
         editor.onkeydown = (e) => ChatEditor._onKeyDown(e);
 
         const chatForm = document.querySelector(".chat-form");
-        chatForm.append(editor);
+        chatForm.append(editor, placeholder);
     }
     static _onKeyDown(e) {
         if (e.key === "Enter" && !e.shiftKey) ChatEditor._send(e);
