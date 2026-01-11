@@ -1,5 +1,7 @@
 # MRKB Foundry VTT Chat Enhancements
 
+---
+
 A small Foundry VTT module that improves chat usability with message editing, actor selection without tokens, chat merging, portrait display options, export features, turn notifications, inline Markdown, and several convenience tools.
 
 Version: 1.1.4
@@ -64,8 +66,6 @@ Configure the module from Foundry's Module Settings (Settings → Manage Modules
 
 ---
 
-# MRKB Foundry VTT 채팅 향상 (MRKB Chat Enhancements)
-
 메시지 편집, 토큰 없이 액터 선택, 채팅 병합, 초상화 표시 옵션, 내보내기 기능, 턴 알림, 인라인 마크다운 등 채팅 사용성을 개선하는 작은 Foundry VTT 모듈입니다.
 
 버전: 1.1.4
@@ -129,8 +129,6 @@ Foundry의 모듈 설정(Settings → Manage Modules → MRKB Chat Enhancements)
 - 채팅 로그가 매우 길어지면 메시지 삭제 시 과거 메시지가 역류하는 시각적 현상이 발생할 수 있습니다. 긴 로그에서 발생하는 렌더링 엣지케이스입니다.
 
 ---
-
-# MRKB Foundry VTT Chat Enhancements
 
 メッセージ編集、トークンなしでのアクター選択、チャットのマージ、ポートレート表示オプション、エクスポート機能、ターン通知、インラインMarkdownなど、チャットの使い勝手を向上させる小さなFoundry VTTモジュールです。
 
