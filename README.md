@@ -1,141 +1,195 @@
 # MRKB Foundry VTT Chat Enhancements
 
-## 포함된 기능 Included features 含まれる機能
+A small Foundry VTT module that improves chat usability with message editing, actor selection without tokens, chat merging, portrait display options, export features, turn notifications, inline Markdown, and several convenience tools.
 
-이하의 기능을 포함합니다.
+Version: 1.1.4
+Compatibility: Foundry VTT v13+ (verified: 13.351)
+Repository: https://github.com/mrkb-fvtt-modules/fvtt-chat-enhancements
+Manifest URL: https://raw.githubusercontent.com/mrkb-fvtt-modules/fvtt-chat-enhancements/refs/heads/master/module.json
+Download (zip): https://github.com/mrkb-fvtt-modules/fvtt-chat-enhancements/archive/master.zip
 
-It includes the following features.
+## Features
 
-以下の機能が含まれています。
+- Chat edit
+  - Edit sent chat messages. Press the Up Arrow in the chat input to recall the last sent message, or click the pencil icon on a chat message to edit it. Editing is also available from the message context menu.
 
-### 채팅 합치기 Chat merge チャットマージ
+- Chat merge
+  - Merge consecutive messages from the same actor for cleaner logs.
 
-동일한 액터로 채팅한 메시지를 병합하여 표시합니다.
+- Actor selector (no token required)
+  - Select an actor without a token and send messages as that actor. Open the actor selector from the leftmost icon in the actor favorites bar.
 
-You can merge messages chatted by the same actor and display them.
+- Actor favorites
+  - Pin frequently used actors to the bottom of the chat window and switch between them using Tab / Shift+Tab or the mouse. Right-click in the selector to add/remove favorites.
 
-同一のアクターでチャットしたメッセージをマージして表示します。
+- Chat portrait
+  - Optionally display actor portraits in the chat log. Portrait display can be disabled for compatibility with different systems.
 
-### 채팅 수정 Chat edit チャット編集
+- Chat export (HTML / PDF)
+  - Export chat logs to HTML or PDF. When exporting to HTML, you can include the CSS inline so the output is self-contained.
 
-발송한 채팅 메시지를 수정할 수 있습니다. 채팅 폼에서 위 방향키(↑)를 눌러 마지막으로 보낸 메시지를 불러오거나, 로그에서 메시지 우측 상단의 연필 아이콘을 클릭하여 수정할 수 있습니다. 컨텍스트 메뉴에서도 수정 기능을 사용할 수 있습니다.
+- Turn notification
+  - Send a notification when a specified actor's turn begins in combat.
 
-You can edit sent chat messages. You can press the up arrow key (↑) in the chat form to retrieve the last sent message, or click the pencil icon at the top right of the message in the log to edit it. You can also use the edit function in the context menu.
+- Inline Markdown
+  - Support for images, links, headings, italics, bold, strikethroughs, blockquotes and other standard Markdown expressions in chat messages.
 
-送信したチャットメッセージを編集できます。チャットフォームで上矢印キー(↑)を押して最後に送信したメッセージを呼び出すか、ログ内のメッセージ右上の鉛筆アイコンをクリックして編集できます。コンテキストメニューでも編集機能を使用できます。
+- Chat commands
+  - /description (or /desc) [content] — Output a descriptive message.
+  - /as [actor name] [content] — Send a message as the specified actor.
+  - /actor (or /act) [actor name] — Change the currently selected actor to the specified actor.
 
-### 액터 셀렉터 Actor selector アクターセレクター
+## Settings
 
-토큰 없이 액터를 선택하고 그 액터로 메시지를 보낼 수 있게 합니다. 액터 즐겨찾키 바의 맨 왼쪽 아이콘을 클릭하여 액터 선택 창을 열 수 있습니다.
+Configure the module from Foundry's Module Settings (Settings → Manage Modules → MRKB Chat Enhancements). Options include portrait display, export ordering (timestamp vs order flag), inclusion of CSS in HTML export, and turn-notice configuration.
 
-You can select an actor without a token and send messages as that actor. You can open the actor selection window by clicking the leftmost icon on the actor favorites bar.
+## Keyboard shortcuts
 
-トークンなしでアクターを選択し、そのアクターとしてメッセージを送信できるようにします。アクターフェイバリットバーの一番左のアイコンをクリックしてアクター選択ウィンドウを開くことができます。
+- Up Arrow in chat input: recall last sent message for quick editing.
+- Tab / Shift+Tab: cycle actor favorites.
 
-### 액터 즐겨찾기 Actor favorites アクターフェイバリット
+## Installation
 
-채팅창 하단에 자주 찾는 액터를 모아두어, tab키 또는 마우스로 전환할 수 있습니다. 액터 선택 창이나 즐겨찾기에서 우클릭을 하여 추가/제거할 수 있습니다. shift + tab으로 역순 전환도 가능합니다.
+1. In Foundry, open the Add-on Modules UI → Install Module.
+2. Use the Manifest URL above or install from the GitHub release ZIP.
+3. Enable the module in Manage Modules and open the Chat tab to access features.
 
-You can gather frequently used actors at the bottom of the chat window and switch between them using the tab key or mouse. You can add/remove them by right-clicking in the actor selection window or favorites. You can also switch in reverse order with shift + tab.
+## Roadmap (planned)
 
-チャットウィンドウの下部に頻繁に使用するアクターを集め、tabキーまたはマウスで切り替えることができます。アクター選択ウィンドウやお気に入りで右クリックして追加/削除できます。shift + tabで逆順に切り替えることも可能です。
+- Chat modes (monologue, call, messenger, comment, tooltip, emergency text, judgment request, narration)
 
-### 채팅 포트레이트 Chat portrait チャットポートレート
+## Known issues
 
-로그상에 포트레이트를 출력합니다. 각 시스템과의 호환을 위해 옵션에서 사용하지 않도록 설정할 수도 있습니다.
+- When the chat log becomes very long, message deletion can trigger visual backflow of past messages in the log. This is a rendering edge case observed with long histories.
 
-You can display portraits in the log. To ensure compatibility with each system, you can also disable it in the options.
+---
 
-ログ上にポートレートを表示します。各システムとの互換性のために、オプションで使用しないように設定することもできます。
+# MRKB Foundry VTT 채팅 향상 (MRKB Chat Enhancements)
 
-### 로그 내보내기 Chat log export チャットログエクスポート
+메시지 편집, 토큰 없이 액터 선택, 채팅 병합, 초상화 표시 옵션, 내보내기 기능, 턴 알림, 인라인 마크다운 등 채팅 사용성을 개선하는 작은 Foundry VTT 모듈입니다.
 
-HTML 또는 PDF 형식으로 채팅을 내보냅니다. HTML로 내보낼 경우 스타일시트의 포함 여부를 선택할 수 있습니다.
+버전: 1.1.4
+호환성: Foundry VTT v13 이상 (검증: 13.351)
+레포지토리: https://github.com/mrkb-fvtt-modules/fvtt-chat-enhancements
+매니페스트 URL: https://raw.githubusercontent.com/mrkb-fvtt-modules/fvtt-chat-enhancements/refs/heads/master/module.json
+다운로드 (zip): https://github.com/mrkb-fvtt-modules/fvtt-chat-enhancements/archive/master.zip
 
-You can export chats in HTML or PDF format. When exporting to HTML, you can choose whether to include the stylesheet.
+## 기능
 
-チャットをHTMLまたはPDF形式でエクスポートできます。HTMLにエクスポートする場合、スタイルシートの含有を選択できます。
+- 채팅 편집
+  - 이미 보낸 채팅 메시지를 편집할 수 있습니다. 채팅 입력에서 ↑(위 화살표)를 눌러 마지막으로 전송한 메시지를 불러오거나, 로그의 연필 아이콘을 클릭하여 메시지를 편집할 수 있습니다. 컨텍스트 메뉴에서도 편집을 사용할 수 있습니다.
 
-### 턴 알림 Turn notification ターン通知
+- 채팅 병합
+  - 같은 액터가 연속으로 보낸 메시지를 병합하여 로그를 깔끔하게 정리합니다.
 
-특정 액터의 턴이 시작될 때 알림을 보냅니다.
+- 액터 선택기 (토큰 불필요)
+  - 토큰 없이 액터를 선택하고 해당 액터로 메시지를 전송할 수 있습니다. 액터 즐겨찾기 바의 가장 왼쪽 아이콘을 클릭해 액터 선택 창을 엽니다.
 
-Sends a notification when a specific actor's turn begins.
+- 액터 즐겨찾기
+  - 자주 사용하는 액터를 채팅 창 하단에 고정하고 Tab / Shift+Tab 또는 마우스로 빠르게 전환할 수 있습니다. 선택기에서 우클릭으로 추가/제거합니다.
 
-特定のアクターのターンが始まるときに通知を送信します。
+- 채팅 초상화
+  - 채팅 로그에 초상화를 표시합니다. 시스템 간 호환성을 위해 옵션에서 비활성화할 수 있습니다.
 
-### 인라인 마크다운 Inline markdown インラインマークダウン
+- 채팅 내보내기 (HTML / PDF)
+  - 채팅 로그를 HTML 또는 PDF로 내보낼 수 있습니다. HTML 내보내기 시 CSS를 포함(inline)하여 단일 파일로 만들 수 있습니다.
 
-이미지, 링크, 헤딩, 기울임, 굵기, 취소선, 인용구 등의 표현을 지원합니다. 문법은 표준 마크다운 문법과 동일합니다.
+- 턴 알림
+  - 전투에서 특정 액터의 턴이 시작될 때 알림을 보냅니다.
 
-Supports expressions such as images, links, headings, italics, bold, strikethroughs, and blockquotes. The syntax is the same as standard markdown syntax.
+- 인라인 마크다운
+  - 이미지, 링크, 제목, 기울임/굵게/취소선, 인용구 등 표준 마크다운 표현을 지원합니다.
 
-画像、リンク、見出し、斜体、太字、取り消し線、引用などの表現をサポートします。文法は標準のマークダウン文法と同じです。
+- 채팅 명령어
+  - /description (또는 /desc) [내용] — 설명형 메시지를 출력합니다.
+  - /as [액터 이름] [내용] — 지정한 액터로 메시지를 전송합니다.
+  - /actor (또는 /act) [액터 이름] — 현재 선택된 액터를 변경합니다.
 
-### 채팅 명령어 Chat commands チャットコマンド
+## 설정
 
-이하의 명령어를 지원합니다.
+Foundry의 모듈 설정(Settings → Manage Modules → MRKB Chat Enhancements)에서 모듈 옵션을 구성할 수 있습니다. 초상화 표시, 내보내기 정렬(타임스탬프 vs 순서 플래그), HTML 내 CSS 포함, 턴 알림 설정 등이 포함됩니다.
 
-- /description(/desc) [내용] : 서술용 메시지를 출력합니다.
-- /as [액터 이름] [내용] : 지정한 액터로 메시지를 보냅니다.
-- /actor(/act) [액터 이름] : 현재 선택된 액터를 지정한 액터로 변경합니다.
+## 단축키
 
-The following commands are supported.
+- 채팅 입력에서 ↑: 마지막 전송 메시지 불러오기(편집)
+- Tab / Shift+Tab: 액터 즐겨찾기 순환
 
-- /description(/desc) [content] : Outputs a descriptive message.
-- /as [actor name] [content] : Sends a message as the specified actor.
-- /actor(/act) [actor name] : Changes the currently selected actor to the specified actor.
+## 설치
 
-以下のコマンドをサポートしています。
+1. Foundry의 Add-on Modules UI → Install Module을 엽니다.
+2. 위 매니페스트 URL을 사용하거나 GitHub ZIP을 설치합니다.
+3. Manage Modules에서 모듈을 활성화한 뒤 채팅 탭을 열어 기능을 사용합니다.
 
-- /description(/desc) [内容] : 描写用メッセージを出力します。
-- /as [アクター名] [内容] : 指定したアクターとしてメッセージを送信します。
-- /actor(/act) [アクター名] : 現在選択されているアクターを指定したアクターに変更します。
+## 로드맵 (계획)
 
-### 다국어 지원 Multilingual support 多言語サポート
+- 채팅 모드(독백, 통화, 메신저, 코멘트, 툴팁, 긴급 문자, 판정 요청, 내레이션)
 
-한국어, 영어, 일본어를 지원합니다.
+## 알려진 문제
 
-Supports Korean, English, and Japanese.
+- 채팅 로그가 매우 길어지면 메시지 삭제 시 과거 메시지가 역류하는 시각적 현상이 발생할 수 있습니다. 긴 로그에서 발생하는 렌더링 엣지케이스입니다.
 
-韓国語、英語、日本語をサポートしています。
+---
 
-## 지원 예정 Upcoming features 今後の機能
+# MRKB Foundry VTT Chat Enhancements
 
-아래는 추가가 예정된 기능들입니다.
+メッセージ編集、トークンなしでのアクター選択、チャットのマージ、ポートレート表示オプション、エクスポート機能、ターン通知、インラインMarkdownなど、チャットの使い勝手を向上させる小さなFoundry VTTモジュールです。
 
-The following features are scheduled to be added.
+バージョン: 1.1.4
+互換性: Foundry VTT v13以上 (検証: 13.351)
+リポジトリ: https://github.com/mrkb-fvtt-modules/fvtt-chat-enhancements
+マニフェストURL: https://raw.githubusercontent.com/mrkb-fvtt-modules/fvtt-chat-enhancements/refs/heads/master/module.json
+ダウンロード (zip): https://github.com/mrkb-fvtt-modules/fvtt-chat-enhancements/archive/master.zip
 
-以下は追加予定の機能です。
+## 機能
 
-### 채팅 모드 Chat mode チャットモード
+- チャット編集
+  - 送信済みのチャットメッセージを編集できます。チャット入力で↑キーを押すと最後に送信したメッセージを呼び出せます。ログのメッセージ右上にある鉛筆アイコンをクリックして編集することもできます。コンテキストメニューからの編集も可能です。
 
-독백, 통화, 메신저, 댓글, 툴팁, 긴급재난문자, 판정요구, 서술 모드 지원.
+- チャットマージ
+  - 同じアクターが連続で送信したメッセージをマージしてログを整理します。
 
-Supports monologue, call, messenger, comment, tooltip, emergency disaster text, judgment request, and narration modes.
+- アクターセレクター（トークン不要）
+  - トークンなしでアクターを選択し、そのアクターとしてメッセージを送信できます。アクターフェイバリットバーの一番左のアイコンをクリックしてアクター選択ウィンドウを開きます。
 
-独白、通話、メッセンジャー、コメント、ツールチップ、緊急災害文字、判定要求、叙述モードをサポートします。
+- アクターフェイバリット
+  - よく使うアクターをチャットウィンドウ下部にピンでき、Tab / Shift+Tab またはマウスで切り替えられます。セレクターで右クリックして追加/削除します。
 
-### 메모 Memo メモ
+- チャットポートレート
+  - チャットログにポートレートを表示します。システム間の互換性のため、オプションで無効化できます。
 
-특정 채팅 메시지를 지정하여 메모로 추가.
+- チャットエクスポート（HTML / PDF）
+  - チャットログをHTMLまたはPDFでエクスポートできます。HTMLエクスポート時にCSSをインラインで含め、自己完結型のファイルにすることが可能です。
 
-Select a specific chat message and add it as a memo.
+- ターン通知
+  - 戦闘で特定のアクターのターンが開始されたときに通知を送信します。
 
-特定のチャットメッセージを指定してメモとして追加します。
+- インラインMarkdown
+  - 画像、リンク、見出し、斜体、太字、取り消し線、ブロック引用など、標準的なMarkdown表現をサポートします。
 
-### 타임 요청 Pause request タイムリクエスト
+- チャットコマンド
+  - /description (または /desc) [内容] — 説明用メッセージを出力します。
+  - /as [アクター名] [内容] — 指定したアクターとしてメッセージを送信します。
+  - /actor (または /act) [アクター名] — 現在選択されているアクターを変更します。
 
-발언권, 또는 별도의 이유로 시간을 받아야 할 때 신호 전송.
+## 設定
 
-You can send a signal when you need to take time for speaking rights or other reasons.
+Foundryのモジュール設定(Settings → Manage Modules → MRKB Chat Enhancements)からモジュールを設定できます。ポートレート表示、エクスポート順序（タイムスタンプ vs Order Flag）、HTML内でのCSSの含有、ターン通知設定などを変更できます。
 
-発言権、または別の理由で時間を取る必要があるときに信号を送信できます。
+## キーボードショートカット
 
-## 알려진 문제 Known issues 既知の問題
+- チャット入力で↑キー: 最後に送信したメッセージを呼び出して編集
+- Tab / Shift+Tab: アクターフェイバリットを循環
 
-로그가 길어질 경우 메시지 삭제 과정에서 과거 메시지 역류가 발생할 수 있습니다.
+## インストール
 
-When the log gets long, past message backflow may occur during the message deletion process.
+1. FoundryのAdd-on Modules UI → Install Moduleを開きます。
+2. 上のマニフェストURLを使用するか、GitHubのZIPからインストールします。
+3. Manage Modulesでモジュールを有効化し、チャットタブを開いて機能を利用します。
 
-ログが長くなると、メッセージ削除プロセス中に過去のメッセージの逆流が発生する可能性があります。
+## ロードマップ（予定）
+
+- チャットモード（独白、通話、メッセンジャー、コメント、ツールチップ、緊急テキスト、判定要求、ナレーション）
+
+## 既知の問題
+
+- チャットログが非常に長くなると、メッセージ削除時に過去のメッセージが逆流するような視覚的な現象が発生することがあります。長い履歴で観察されるレンダリングのエッジケースです。
