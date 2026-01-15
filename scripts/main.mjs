@@ -5,10 +5,15 @@ import ControlButtons from "./controlButtons.mjs";
 import ActorControl from "./actorControl.mjs";
 import ChatHotkey from "./chatHotkey.mjs";
 import TurnNotice from "./turnNotice.mjs";
+import SystemSpecific from "./systemSpecific.js";
 
 Hooks.once("init", () => {
     //CONFIG.debug.hooks = true;
     Setting.register();
+    if (game.system.id === "fatex") SystemSpecific.killFateXChatStyles();
+});
+Hooks.once("ready", () => {
+    ui.chat.element.querySelector(".chat-log").classList.remove("themed", "theme-light");
 });
 Hooks.on("renderAbstractSidebarTab", (tab, html) => {
     if (tab.id === "chat") {
