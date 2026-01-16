@@ -156,11 +156,20 @@ export default class ChatHandler {
     static renderProcesser(message, html) {
         if (Setting.get("use-portrait")) {
             const id = message.speaker.actor;
+            const alias = message.alias;
             const actorImage = getPortrait(id, message?.author?.id);
 
             const portrait = document.createElement("img");
             portrait.src = actorImage;
             portrait.className = "message-portrait";
+            portrait.dataset.tooltip = alias;
+            portrait.dataset.tooltipDirection = "LEFT";
+            portrait.dataset.tooltipHtml = `
+                <div class="portrait-tooltip">
+                    <img class="portrait-image" src="${actorImage}" alt="${alias}">
+                    <h4 class="portrait-name">${alias}</h4>
+                </div>
+            `;
 
             const header = html.querySelector(".message-header");
             header.prepend(portrait);
@@ -201,25 +210,6 @@ export default class ChatHandler {
         }
         ChatHandler.checkChatFlag(message, html);
     }
-    static expandPortrait(event) {
-        const bck = document.createElement("img");
-        bck.id = "portrait-view-bck";
-        bck.src = event.target.src;
-        const img = document.createElement("img");
-        img.id = "portrait-view-img";
-        img.src = event.target.src;
-
-        const div = document.createElement("div");
-        div.id = "portrait-view";
-        div.append(bck, img);
-
-        const body = document.querySelector("#mrkb-float");
-        body.append(div);
-    }
-    static cleanupExpanded() {
-        const imgs = document.querySelectorAll("#portrait-view");
-        imgs.forEach((e) => e.remove());
-    }
     static checkChatFlag(message, html) {
         html.dataset.order = message.getFlag("mrkb-chat-enhancements", "order");
         html.classList.add(message.getFlag("mrkb-chat-enhancements", "type") ?? "");
@@ -230,31 +220,37 @@ export default class ChatHandler {
     static fixChatFlag() {
         if (game.messages.size === 0) return;
         const msgs = game.messages.contents;
+        const getFlag = (msg, flag) => {
+            return msg.getFlag("mrkb-chat-enhancements", flag);
+        }
         msgs.forEach((e) => {
-            const parent = msgs.find(a => a.id === e.getFlag("mrkb-chat-enhancements", "parent"));
+            const type = getFlag(e, "type");
+            const isAdded = getFlag(e, "added");
+            const hasParent = !!getFlag(e, "parent");
+            const parent = hasParent ? msgs.find(a => a.id === getFlag(e, "parent")) : null;
             const prev = msgs[msgs.indexOf(e) - 1];
             const option = {
-                type : e.getFlag("mrkb-chat-enhancements", "type"),
-                desc : e.getFlag("mrkb-chat-enhancements", "type") === "desc",
-                kakao : e.getFlag("mrkb-chat-enhancements", "type") === "kakao",
-                truner : e.getFlag("mrkb-chat-enhancements", "type") === "turner"
+                type : type,
+                desc : type === "desc",
+                kakao : type === "kakao",
+                truner : type === "turner"
             }
             if (msgs.indexOf(e) === 0) {
                 if (game.user.isGM) {
-                    e.setFlag("mrkb-chat-enhancements", "added", false);
-                    e.setFlag("mrkb-chat-enhancements", "parent", null);
+                    if (isAdded) e.setFlag("mrkb-chat-enhancements", "added", false);
+                    if (hasParent) e.setFlag("mrkb-chat-enhancements", "parent", null);
                 }
                 document.querySelector(`[data-message-id="${e.id}"]`)?.classList?.remove("added");
             }else if (!parent && !this.isFamily(prev, e, e.speaker, option)) {
                 if (game.user.isGM) {
-                    e.setFlag("mrkb-chat-enhancements", "added", false);
-                    e.setFlag("mrkb-chat-enhancements", "parent", null);
+                    if (isAdded) e.setFlag("mrkb-chat-enhancements", "added", false);
+                    if (hasParent) e.setFlag("mrkb-chat-enhancements", "parent", null);
                 }
                 document.querySelector(`[data-message-id="${e.id}"]`)?.classList?.remove("added");
             } else {
                 if (game.user.isGM) {
-                    e.setFlag("mrkb-chat-enhancements", "added", true);
-                    e.setFlag("mrkb-chat-enhancements", "parent", prev.id);
+                    if (!isAdded) e.setFlag("mrkb-chat-enhancements", "added", true);
+                    if (getFlag(e, parent) !== prev.id) e.setFlag("mrkb-chat-enhancements", "parent", prev.id);
                 }
                 document.querySelector(`[data-message-id="${e.id}"]`)?.classList?.add("added");
             }

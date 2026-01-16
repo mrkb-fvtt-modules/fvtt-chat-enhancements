@@ -2,7 +2,7 @@
     "id": "mrkb-chat-enhancements",
     "title": "MRKB Chat Enhancements",
     "description": "<p>MRKB's Foundry VTT Chat Enhancements</p>",
-    "version": "1.1.5",
+    "version": "1.2.0",
     "compatibility": {
         "minimum": "13",
         "verified": "13.351"
@@ -23,7 +23,8 @@
         "styles/actorControl.css",
         "styles/chat.css",
         "styles/chatEditor.css",
-        "styles/chatExporter.css"
+        "styles/chatExporter.css",
+        "styles/tooltip.css"
     ],
     "languages": [
         {

@@ -1,0 +1,16 @@
+.portrait-tooltip {
+    padding: 10px;
+}
+.portrait-image {
+    width: 240px;
+    height: 240px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+.portrait-name {
+    width: 100%;
+    text-align: center;
+    font-family: var(--gothic-bold), sans-serif;
+    font-size: 24px;
+    margin: 5px 0 0 0;
+}
