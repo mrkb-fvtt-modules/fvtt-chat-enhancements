@@ -6,6 +6,7 @@ import ActorControl from "./actorControl.mjs";
 import ChatHotkey from "./chatHotkey.mjs";
 import TurnNotice from "./turnNotice.mjs";
 import SystemSpecific from "./systemSpecific.js";
+import TypingAlert from "./typingAlert.mjs";
 
 Hooks.once("init", () => {
     //CONFIG.debug.hooks = true;
@@ -21,6 +22,9 @@ Hooks.on("renderAbstractSidebarTab", (tab, html) => {
         ChatEditor.initialize();
         ChatHotkey.initialize();
         ControlButtons.initialize();
+        TypingAlert.initialize();
+        TypingAlert.clearOldTypingAlerts();
+        TypingAlert.startClearingInterval();
     }
 });
 Hooks.on("combatTurnChange", (combatData) => {

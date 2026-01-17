@@ -1,6 +1,7 @@
 import ChatEditor from "./chatEditor.mjs";
 import ActorControl from "./actorControl.mjs";
 import Setting from "./setting.mjs";
+import TypingAlert from "./typingAlert.mjs";
 
 export default class ChatHotkey {
     static initialize() {
@@ -9,7 +10,7 @@ export default class ChatHotkey {
     }
 
     static _chatMessageListener(e) {
-        const form = document.querySelector("#chat-form");
+        TypingAlert.emitTypingAlert("add");
         if (e.key === "Tab") {
             e.preventDefault();
             e.stopImmediatePropagation();

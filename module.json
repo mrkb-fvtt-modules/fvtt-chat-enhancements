@@ -1,8 +1,8 @@
 {
     "id": "mrkb-chat-enhancements",
-    "title": "MRKB Chat Enhancements",
+    "title": "MRKB's Chat Enhancements",
     "description": "<p>MRKB's Foundry VTT Chat Enhancements</p>",
-    "version": "1.2.0",
+    "version": "1.3.0",
     "compatibility": {
         "minimum": "13",
         "verified": "13.351"
@@ -24,7 +24,8 @@
         "styles/chat.css",
         "styles/chatEditor.css",
         "styles/chatExporter.css",
-        "styles/tooltip.css"
+        "styles/tooltip.css",
+        "styles/typingAlert.css"
     ],
     "languages": [
         {
@@ -43,6 +44,7 @@
             "path": "lang/en.json"
         }
     ],
+    "socket": true,
     "url": "https://github.com/mrkb-fvtt-modules/fvtt-chat-enhancements",
     "manifest": "https://raw.githubusercontent.com/mrkb-fvtt-modules/fvtt-chat-enhancements/refs/heads/master/module.json",
     "download": "https://github.com/mrkb-fvtt-modules/fvtt-chat-enhancements/archive/master.zip"

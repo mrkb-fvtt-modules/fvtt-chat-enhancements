@@ -15,6 +15,8 @@
         "OpenActorSelector": "Open Actor Selector",
         "Timestamp": "Timestamp",
         "TimestampTooltip": "Exports messages sorted by the Timestamp, which is set according to the client time when the message is created. The order may be mixed if there is a discrepancy in the time of the personal computer.",
+        "IsTyping": "is typing...",
+        "AreTyping": "are typing...",
         "Unclassified": "Unclassified"
     }
 }

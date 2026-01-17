@@ -1,0 +1,15 @@
+#typing-alert-container {
+    position: absolute;
+    bottom: 8px;
+    width: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 11px;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+#typing-alert-container.active {
+    opacity: 1;
+}

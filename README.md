@@ -1,15 +1,15 @@
-# MRKB Foundry VTT Chat Enhancements
+# MRKB's Foundry VTT Chat Enhancements
 
 ---
 
-A small Foundry VTT module that improves chat usability with message editing, actor selection without tokens, chat merging, portrait display options, export features, turn notifications, inline Markdown, actor favorites, and several convenience tools.
+A small Foundry VTT module that improves chat usability with message editing, actor selection without tokens, chat merging, portrait display options, export features, turn notifications, inline Markdown, actor favorites, typing indicators, and several convenience tools.
 
-Version: 1.2.0
+Version: 1.3.0
 Compatibility: Foundry VTT v13+ (verified: 13.351)
 
 ## Overview
 
-This module enhances Foundry VTT's chat in several practical ways for both GMs and players. It focuses on editable messages, flexible actor control (including selecting actors without tokens and pinning favorites), chat log presentation (merging related messages and optional portraits), export tools (HTML/PDF with ordering and CSS options), turn-start notifications, and inline Markdown parsing.
+This module enhances Foundry VTT's chat in several practical ways for both GMs and players. It focuses on editable messages, flexible actor control (including selecting actors without tokens and pinning favorites), chat log presentation (merging related messages and optional portraits), export tools (HTML/PDF with ordering and CSS options), turn-start notifications, inline Markdown parsing, typing indicators, and additional convenience settings for chat behaviour and appearance.
 
 ## Key Features
 
@@ -37,10 +37,23 @@ This module enhances Foundry VTT's chat in several practical ways for both GMs a
 - Inline Markdown
   - Support for images, links, headings, italics, bold, strikethroughs, blockquotes and other standard Markdown expressions in chat messages.
 
+- Typing indicator
+  - Shows who is currently typing in the chat input. Other clients are informed via the module socket and a small indicator displays recent typers in the chat UI.
+
+- Quickchat & selection behaviour
+  - Quickchat: when enabled, selecting a token can automatically focus the chat input and insert quotation marks for fast roleplay.
+  - Selection behaviour: choose whether the chat input selects the message content (minus quotes) for immediate editing or places the cursor at the end for continued typing.
+
 - Chat commands
   - `/description` (or `/desc`) `[content]` — Output a descriptive message.
   - `/as` `[actor name]` `[content]` — Send a message as the specified actor.
   - `/actor` (or `/act`) `[actor name]` — Change the currently selected actor to the specified actor.
+  - `/turn` `[content]` — (GM only) Post a turn notification message (same behaviour as automatic turn notices).
+
+- Chat UI & appearance settings (new)
+  - Chat font-size: adjust the chat font size from client settings.
+  - Roll20-style chat layout: toggle an alternate chat appearance reminiscent of Roll20.
+  - Sidebar width: configure the sidebar width used by the module's actor selector/favorites.
 
 ## Settings
 
@@ -50,6 +63,12 @@ Configure the module from Foundry's Module Settings (Settings → Manage Modules
 - Include CSS when exporting HTML
 - Turn-notice configuration
 - Actor favorites list
+- Typing indicator (internal, handled automatically)
+- Chat font-size (client setting)
+- Quickchat (enable/disable)
+- Selection behaviour when token changes
+- Roll20-style chat option
+- Sidebar width
 
 ## Keyboard shortcuts
 
@@ -64,14 +83,14 @@ Configure the module from Foundry's Module Settings (Settings → Manage Modules
 
 ---
 
-메시지 편집, 토큰 없이 액터 선택, 채팅 병합, 초상화 표시 옵션, 내보내기 기능, 턴 알림, 인라인 마크다운, 액터 즐겨찾기 등 채팅 사용성을 개선하는 작은 Foundry VTT 모듈입니다.
+메시지 편집, 토큰 없이 액터 선택, 채팅 병합, 초상화 표시 옵션, 내보내기 기능, 턴 알림, 인라인 마크다운, 액터 즐겨찾기, 입력 중 표시(타이핑 인디케이터) 및 여러 가지 편의 설정을 포함한 채팅 사용성을 개선하는 작은 Foundry VTT 모듈입니다.
 
-버전: 1.2.0
+버전: 1.3.0
 호환성: Foundry VTT v13 이상 (검증: 13.351)
 
 ## 개요
 
-이 모듈은 GM과 플레이어 모두를 위해 Foundry VTT의 채팅을 실용적으로 향상시킵니다. 보낸 메시지 편집, 토큰 없이 액터 제어(액터 선택 및 즐겨찾기 고정), 채팅 로그 표시(연속 메시지 병합 및 선택적 초상화), 내보내기 도구(HTML/PDF 및 정렬/ CSS 옵션), 턴 시작 알림, 인라인 마크다운 파싱 등에 중점을 둡니다.
+이 모듈은 GM과 플레이어 모두를 위해 Foundry VTT의 채팅을 실용적으로 향상시킵니다. 보낸 메시지 편집, 토큰 없이 액터 제어(액터 선택 및 즐겨찾기 고정), 채팅 로그 표시(연속 메시지 병합 및 선택적 초상화), 내보내기 도구(HTML/PDF 및 정렬/ CSS 옵션), 턴 시작 알림, 인라인 마크다운 파싱, 입력 중 표시, 채팅 동작/외형 설정 등을 제공합니다.
 
 ## 주요 기능
 
@@ -99,10 +118,23 @@ Configure the module from Foundry's Module Settings (Settings → Manage Modules
 - 인라인 마크다운
   - 이미지, 링크, 제목, 기울임/굵게/취소선, 인용구 등 표준 마크다운 표현을 지원합니다.
 
+- 입력 중 표시
+  - 채팅 입력창에 누가 입력 중인지 표시합니다. 모듈 소켓을 통해 다른 클라이언트에 알리며, 채팅 UI에 최근 입력자 목록을 표시합니다.
+
+- 빠른 대화 & 선택 동작
+  - 빠른 대화(Quickchat): 활성화하면 토큰 선택 시 자동으로 채팅 입력으로 포커스가 이동하고, 빠른 롤플레이를 위해 큰따옴표가 자동으로 삽입됩니다.
+  - 선택 동작: 토큰 변경 시 채팅 입력의 선택 동작(따옴표 제외 본문 전체 선택 또는 커서 끝으로 이동)을 설정할 수 있습니다.
+
 - 채팅 명령어
   - `/description` (또는 `/desc`) `[내용]` — 설명형 메시지를 출력합니다.
   - `/as` `[액터 이름]` `[내용]` — 지정한 액터로 메시지를 전송합니다.
   - `/actor` (또는 `/act`) `[액터 이름]` — 현재 선택된 액터를 변경합니다.
+  - `/turn` `[내용]` — (GM 전용) 턴 알림 메시지를 전송합니다.
+
+- 채팅 UI 및 외형 설정
+  - 채팅 폰트 크기: 클라이언트 설정에서 채팅 폰트 크기를 조정할 수 있습니다.
+  - Roll20형 챗로그: Roll20 스타일의 대체 레이아웃을 활성화할 수 있습니다.
+  - 사이드바 너비: 액터 선택기/즐겨찾기에서 사용하는 사이드바 너비를 설정할 수 있습니다.
 
 ## 설정
 
@@ -112,6 +144,12 @@ Foundry의 모듈 설정(Settings → Manage Modules → MRKB Chat Enhancements)
 - HTML 내 CSS 포함 여부
 - 턴 알림 설정
 - 액터 즐겨찾기 목록
+- 입력 중 표시(내부적으로 소켓으로 처리됨)
+- 채팅 폰트 크기(클라이언트)
+- 빠른 대화(Quickchat)
+- 선택 동작(토큰 변경 시)
+- Roll20형 채팅 옵션
+- 사이드바 너비
 
 ## 단축키
 
@@ -126,14 +164,14 @@ Foundry의 모듈 설정(Settings → Manage Modules → MRKB Chat Enhancements)
 
 ---
 
-メッセージ編集、トークンなしでのアクター選択、チャットのマージ、ポートレート表示オプション、エクスポート機能、ターン通知、インラインMarkdown、アクターフェイバリットなど、チャットの使い勝手を向上させる小さなFoundry VTTモジュールです。
+メッセージ編集、トークンなしでのアクター選択、チャットのマージ、ポートレート表示オプション、エクスポート機能、ターン通知、インラインMarkdown、アクターフェイバリット、入力中インジケータ、そしていくつかのチャット利便性設定を提供する小さなFoundry VTTモジュールです。
 
-バージョン: 1.2.0
+バージョン: 1.3.0
 互換性: Foundry VTT v13以上 (検証: 13.351)
 
 ## 概要
 
-このモジュールは、GMとプレイヤーの両方のためにFoundry VTTのチャットを実用的に強化します。送信済みメッセージの編集、トークンなしでのアクター制御（アクター選択とお気に入り固定）、チャットログ表示（連続メッセージのマージとオプションのポートレート）、エクスポートツール（HTML/PDF、並び順とCSSオプション）、ターン開始通知、インラインMarkdownパースなどに焦点を当てています。
+このモジュールは、GMとプレイヤーの両方のためにFoundry VTTのチャットを実用的に強化します。送信済みメッセージの編集、トークンなしでのアクター制御（アクター選択とお気に入り固定）、チャットログ表示（連続メッセージのマージとオプションのポートレート）、エクスポートツール（HTML/PDF、並び順とCSSオプション）、ターン開始通知、インラインMarkdownパース、入力中インジケータ、チャット動作/外観の設定などを提供します。
 
 ## 主な機能
 
@@ -144,7 +182,7 @@ Foundry의 모듈 설정(Settings → Manage Modules → MRKB Chat Enhancements)
   - 同じアクターが連続で送信したメッセージをマージしてログを整理します。
 
 - アクターセレクター（トークン不要）
-  - トークンなしでアクターを選択し、そのアクターとしてメッセージを送信できます。アクターフェイバリットバーの一番左のアイコンをクリックしてアクター選択ウィンドウを開きます。
+  - トークンなしでアクターを選択し、そのアクターとしてメッセージを送信できます。アクターフェイバリットバーの一番左のアイコンをクリックしてアクターセレクターを開きます。
 
 - アクターフェイバリット
   - よく使うアクターをチャットウィンドウ下部にピンでき、Tab / Shift+Tab またはマウスで切り替えられます。セレクターで右クリックして追加/削除します。
@@ -161,10 +199,23 @@ Foundry의 모듈 설정(Settings → Manage Modules → MRKB Chat Enhancements)
 - インラインMarkdown
   - 画像、リンク、見出し、斜体、太字、取り消し線、ブロック引用など、標準的なMarkdown表現をサポートします。
 
+- 入力中インジケータ
+  - チャット入力で誰が入力しているかを表示します。モジュールのソケットを介して他のクライアントに通知され、チャットUIに最近入力しているプレイヤーを表示します。
+
+- Quickchat & 選択動作
+  - Quickchat: 有効にすると、トークン選択時に自動でチャット入力にフォーカスし、引用符を自動で挿入して素早いロールプレイ入力を支援します。
+  - 選択動作: トークン変更時に引用符を除いた本文を全選択するか、カーソルを末尾に移動するかを切り替えられます。
+
 - チャットコマンド
   - `/description` (または `/desc`) `[内容]` — 説明用メッセージを出力します。
   - `/as` `[アクター名]` `[内容]` — 指定したアクターとしてメッセージを送信します。
   - `/actor` (または `/act`) `[アクター名]` — 現在選択されているアクターを変更します。
+  - `/turn` `[内容]` — (GM専用) ターン通知メッセージを送信します。
+
+- チャットUIと外観設定
+  - チャットのフォントサイズ: クライアント設定から調整可能です。
+  - Roll20風チャットレイアウト: Roll20風の代替レイアウトを有効化できます。
+  - サイドバー幅: アクターセレクター/フェイバリットで使用されるサイドバー幅を設定できます。
 
 ## 設定
 
@@ -174,6 +225,12 @@ Foundryのモジュール設定(Settings → Manage Modules → MRKB Chat Enhanc
 - HTMLエクスポートでのCSS含有
 - ターン通知設定
 - アクターフェイバリットリスト
+- 入力中インジケータ(内部的にソケットで処理)
+- チャットフォントサイズ(クライアント)
+- Quickchat
+- 選択動作(トークン変更時)
+- Roll20風チャットオプション
+- サイドバー幅
 
 ## キーボードショートカット
 

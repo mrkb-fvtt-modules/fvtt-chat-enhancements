@@ -212,7 +212,7 @@ export default class ChatHandler {
     }
     static checkChatFlag(message, html) {
         html.dataset.order = message.getFlag("mrkb-chat-enhancements", "order");
-        html.classList.add(message.getFlag("mrkb-chat-enhancements", "type") ?? "");
+        html.classList.add(message.getFlag("mrkb-chat-enhancements", "type") ?? "normal");
 
         if (message.getFlag("mrkb-chat-enhancements", "added")) html.classList.add("added");
         if (message.isAuthor) html.classList.add("self");
