@@ -258,11 +258,14 @@ html{
 }
 .chat-message.added .message-header {
     flex: none;
-    height: 0;
     justify-content: flex-end;
     padding: 0;
     border: 0;
     margin: 0;
+}
+.chat-message.added .message-header:has(.flavor-text),
+.chat-message.added .message-header:has(.whisper-to) {
+    margin: 0 0 8px 0;
 }
 .chat-message.added .message-header img {
     display: none;
