@@ -1,0 +1,15 @@
+/* DND5E */
+.system-dnd5e .chat-message.message::before,
+.system-dnd5e .chat-message .message-header .message-portrait {
+    display: none;
+}
+.system-dnd5e .chat-message .message-header .message-sender {
+    height: auto;
+    flex-direction: row;
+}
+
+/* SWADE */
+.swade.chat-card.item-card .card-header h3,
+.swade.chat-card.item-card .card-header h3:hover {
+    color: var(--color-text-primary);
+}
