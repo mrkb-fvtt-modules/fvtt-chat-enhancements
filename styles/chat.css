@@ -145,6 +145,7 @@ html{
     align-items: center;
     flex-wrap: wrap;
     gap: 0 5px;
+    padding: 0;
     margin: 5px 0 8px 0;
     z-index: 1;
 }
@@ -157,7 +158,7 @@ html{
     border: 0;
     border-radius: 5px;
 }
-.chat-message .message-header .message-sender {
+.chat-message .message-header h4 {
     flex: 1 1 auto;
     min-width: 0;
     height: 36px;
@@ -172,7 +173,7 @@ html{
     margin: 0;
     overflow: hidden;
 }
-.chat-message .message-header .message-sender .message-user {
+.chat-message .message-header h4 .message-user {
     font-size: calc(var(--font-size) - 4px);
     line-height: 12px;
     /*color: #aaaaaa;*/
@@ -252,6 +253,8 @@ html{
     line-height: 140%;
     word-break: break-all;
     color: var(--color-text-secondary);
+    padding: 0;
+    margin: 0;
 }
 
 .chat-message.added {
@@ -270,7 +273,7 @@ html{
 .chat-message.added .message-header img {
     display: none;
 }
-.chat-message.added .message-header .message-sender {
+.chat-message.added .message-header h4 {
     display: none;
 }
 .chat-message.added .message-header .message-metadata {

@@ -154,6 +154,8 @@ export default class ChatHandler {
     static createProcesser(message/*, option, id*/) {
     }
     static renderProcesser(message, html) {
+        const header = html.querySelector(".message-header");
+
         if (Setting.get("use-portrait")) {
             const id = message.speaker.actor;
             const alias = message.alias;
@@ -171,7 +173,6 @@ export default class ChatHandler {
                 </div>
             `;
 
-            const header = html.querySelector(".message-header");
             header.prepend(portrait);
         }
 
@@ -182,16 +183,16 @@ export default class ChatHandler {
         absTime.className = "message-absolute-timestamp";
         absTime.innerHTML = time;
 
-        const timestamp = html.querySelector(".message-timestamp");
+        const timestamp = header.querySelector(".message-timestamp");
 
         const times = document.createElement("div");
         times.className = "message-times";
         times.append(absTime, timestamp);
 
-        const metadata = html.querySelector(".message-metadata");
+        const metadata = header.querySelector(".message-metadata");
         metadata.prepend(times);
 
-        const sender = html.querySelector("h4.message-sender");
+        const sender = header.querySelector("h4");
         sender.innerHTML += `<span class="message-user">${message.author?.name ?? "Deleted User"}</span>`;
 
         if (message.isAuthor || game.user.isGM) {

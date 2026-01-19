@@ -4,7 +4,7 @@ export default class SystemSpecific {
         const styles = head.querySelectorAll("style");
         const fateXStyles = Array.from(styles).find(s => s.innerHTML.includes("fatex"));
         if (fateXStyles) {
-            fateXStyles.innerHTML = "@layer system {" + fateXStyles.innerHTML.replaceAll(`!important`, ``) + "}";
+            fateXStyles.innerHTML = `@layer system{${fateXStyles.innerHTML.replaceAll("src:url(\"/systems", "src:url(\"systems").replaceAll("!important", "")}`;
         }
     }
 }
