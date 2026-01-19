@@ -8,12 +8,13 @@ import ActorControl from "./actorControl.mjs";
 export default class ChatHandler {
     static parseSlashCommand(content) {
         const raw = content.trim().slice(1).trim();
+        console.log(content, raw);
         if (!raw) return { command: "", args: [], rest: "" };
         const parts = raw.split(/\s+/);
         const command = parts.shift();
         const args = parts;
         const rest = args.join(" ");
-        return { command, args, content };
+        return { command, args, rest };
     }
     static chatProcessor(chatLog, message, sender) {
         const reject = (msg = "권한이 없습니다.") => {
