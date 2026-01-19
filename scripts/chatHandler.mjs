@@ -8,6 +8,7 @@ import ActorControl from "./actorControl.mjs";
 export default class ChatHandler {
     static parseSlashCommand(content) {
         const raw = content.trim().slice(1).trim();
+        console.log(content, raw);
         if (!raw) return { command: "", args: [], rest: "" };
         const parts = raw.split(/\s+/);
         const command = parts.shift();
