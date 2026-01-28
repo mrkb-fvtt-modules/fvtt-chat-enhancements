@@ -1,0 +1,19 @@
+.control-buttons {
+    gap: 0;
+}
+.control-buttons .ui-control {
+    border-radius: 0;
+    border-inline-end-width: 0;
+}
+.control-buttons .ui-control:first-child {
+    border-start-start-radius: 4px;
+    border-end-start-radius: 4px;
+}
+.control-buttons .ui-control:last-child {
+    border-start-end-radius: 4px;
+    border-end-end-radius: 4px;
+    border-inline-end-width: 1px;
+}
+.control-buttons .ui-control:hover + .ui-control {
+    border-inline-start-color: var(--control-hover-border-color);
+}

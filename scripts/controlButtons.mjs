@@ -1,7 +1,14 @@
 import ChatExporter from "./chatExporter.mjs";
+import ChatHandler from "./chatHandler.mjs";
 
 export default class ControlButtons {
     static initialize() {
+        const fixChatFlagButton = this._createButton(
+            "fix-chat-flag",
+            "wrench",
+            game.i18n.localize("MRKB.FixChatFlag"),
+            this.fixChatFlag
+        );
         const exportToHTMLButton = this._createButton(
             "export-to-html",
             "file-arrow-down",
@@ -19,7 +26,7 @@ export default class ControlButtons {
         const controlButtons = chatControls.querySelector(".control-buttons");
 
         if (controlButtons) {
-            controlButtons.prepend(exportToHTMLButton, exportToPDFButton);
+            controlButtons.prepend(fixChatFlagButton, exportToHTMLButton, exportToPDFButton);
         } else {
             const buttonsDiv = document.createElement("div");
             buttonsDiv.className = "control-buttons";
@@ -42,6 +49,10 @@ export default class ControlButtons {
 
     static openTextGenerator() {
 
+    }
+
+    static fixChatFlag() {
+        ChatHandler.fixChatFlag(true);
     }
 
     static exportToHTML() {

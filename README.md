@@ -65,10 +65,6 @@ Configure the module from Foundry's Module Settings (Settings → Manage Modules
 - Actor favorites list
 - Typing indicator (internal, handled automatically)
 - Chat font-size (client setting)
-- Quickchat (enable/disable)
-- Selection behaviour when token changes
-- Roll20-style chat option
-- Sidebar width
 
 ## Keyboard shortcuts
 
@@ -146,10 +142,6 @@ Foundry의 모듈 설정(Settings → Manage Modules → MRKB Chat Enhancements)
 - 액터 즐겨찾기 목록
 - 입력 중 표시(내부적으로 소켓으로 처리됨)
 - 채팅 폰트 크기(클라이언트)
-- 빠른 대화(Quickchat)
-- 선택 동작(토큰 변경 시)
-- Roll20형 채팅 옵션
-- 사이드바 너비
 
 ## 단축키
 
@@ -227,10 +219,6 @@ Foundryのモジュール設定(Settings → Manage Modules → MRKB Chat Enhanc
 - アクターフェイバリットリスト
 - 入力中インジケータ(内部的にソケットで処理)
 - チャットフォントサイズ(クライアント)
-- Quickchat
-- 選択動作(トークン変更時)
-- Roll20風チャットオプション
-- サイドバー幅
 
 ## キーボードショートカット
 

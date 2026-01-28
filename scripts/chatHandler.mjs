@@ -212,19 +212,44 @@ export default class ChatHandler {
         ChatHandler.checkChatFlag(message, html);
     }
     static checkChatFlag(message, html) {
-        html.dataset.order = message.getFlag("mrkb-chat-enhancements", "order");
-        html.classList.add(message.getFlag("mrkb-chat-enhancements", "type") ?? "normal");
+        const order = message.getFlag("mrkb-chat-enhancements", "order");
+        const type = message.getFlag("mrkb-chat-enhancements", "type");
+        const added = message.getFlag("mrkb-chat-enhancements", "added");
+        const isAuthor = message.isAuthor;
 
-        if (message.getFlag("mrkb-chat-enhancements", "added")) html.classList.add("added");
-        if (message.isAuthor) html.classList.add("self");
+        html.dataset.order = order ?? "null";
+        html.classList.add(type ?? "normal");
+
+        if (added && Setting.get("chat-merge")) html.classList.add("added");
+        if (isAuthor) html.classList.add("self");
     }
-    static fixChatFlag() {
+    static fixChatFlag(fixEveryMessages = false) {
         if (game.messages.size === 0) return;
-        const msgs = game.messages.contents;
+        const messages = game.messages.contents;
+        const startIndex = fixEveryMessages ? 0 : Math.max(0, messages.length - 51);
+        const msgs = messages.slice(startIndex);
         const getFlag = (msg, flag) => {
             return msg.getFlag("mrkb-chat-enhancements", flag);
         }
-        msgs.forEach((e) => {
+        const setFlag = (msg, flag, value) => {
+            return msg.setFlag("mrkb-chat-enhancements", flag, value);
+        }
+        const reOrdered = msgs.map((e, i) => {
+            const order = getFlag(e, "order");
+            if (!order && order !== 0) {
+                setFlag(e, "order", i + 0.1);
+            }
+            const conflicted = msgs.filter(a => a.id !== e.id && getFlag(a, "order") === order);
+            if (conflicted.length === 0) return e;
+            else {
+                conflicted.forEach((a, idx) => {
+                    setFlag(a, "order", order + ((idx + 1) * 0.1));
+                });
+                setFlag(e, "order", order);
+                return e;
+            }
+        });
+        reOrdered.forEach((e) => {
             const type = getFlag(e, "type");
             const isAdded = getFlag(e, "added");
             const hasParent = !!getFlag(e, "parent");
@@ -238,23 +263,24 @@ export default class ChatHandler {
             }
             if (msgs.indexOf(e) === 0) {
                 if (game.user.isGM) {
-                    if (isAdded) e.setFlag("mrkb-chat-enhancements", "added", false);
-                    if (hasParent) e.setFlag("mrkb-chat-enhancements", "parent", null);
+                    if (isAdded) setFlag(e, "added", false);
+                    if (hasParent) setFlag(e, "parent", null);
                 }
                 document.querySelector(`[data-message-id="${e.id}"]`)?.classList?.remove("added");
             }else if (!parent && !this.isFamily(prev, e, e.speaker, option)) {
                 if (game.user.isGM) {
-                    if (isAdded) e.setFlag("mrkb-chat-enhancements", "added", false);
-                    if (hasParent) e.setFlag("mrkb-chat-enhancements", "parent", null);
+                    if (isAdded) setFlag(e, "added", false);
+                    if (hasParent) setFlag(e, "parent", null);
                 }
                 document.querySelector(`[data-message-id="${e.id}"]`)?.classList?.remove("added");
             } else {
                 if (game.user.isGM) {
-                    if (!isAdded) e.setFlag("mrkb-chat-enhancements", "added", true);
-                    if (getFlag(e, parent) !== prev.id) e.setFlag("mrkb-chat-enhancements", "parent", prev.id);
+                    if (!isAdded) setFlag(e, "added", true);
+                    if (parent !== prev.id) setFlag(e, "parent", prev.id);
                 }
                 document.querySelector(`[data-message-id="${e.id}"]`)?.classList?.add("added");
             }
         });
+        return ui.notifications.info("대화 플래그 수정이 완료되었습니다.");
     }
 }

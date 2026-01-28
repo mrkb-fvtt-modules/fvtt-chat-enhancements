@@ -1,0 +1,32 @@
+@import "./actorControl.css";
+@import "./chat.css";
+@import "./chatEditor.css";
+@import "./chatExporter.css";
+@import "./fonts.css";
+@import "./sidebar.css";
+@import "./systems.css";
+@import "./tooltip.css";
+@import "./typingAlert.css";
+
+html{
+    --gothic-regular: 'NEXON Lv1 Gothic OTF', serif;
+    --gothic-bold: 'NEXON Lv1 Gothic OTF Bold', serif;
+    --gothic-extra: 'Black Han Sans', serif;
+
+    --mingjo-regular: "DNFForgedBlade", serif;
+    --mingjo-bold: "DNFForgedBladeBold", serif;
+
+    --handwrite-regular: "CHOGOONChickenScratchV2-Medium", serif;
+    --handwrite-bold: "KCCImkwontaek", serif;
+
+    --font-size: 14px;
+
+    --radius: 5px;
+
+    --sidebar-width: 300px;
+    --sidebar-nav-width: 40px;
+    --bottom-main-height: 50px;
+    --bottom-sub-height: 30px;
+
+    --max-height: 100vh;
+}
