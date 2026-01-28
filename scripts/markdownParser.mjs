@@ -12,6 +12,12 @@ function wrapBlock(tag, content) {
 export function parse(markdown = '') {
     if (markdown === null || markdown === undefined) return '';
     let md = String(markdown).replace(/\r\n?/g, '\n');
+    const placeholders = [];
+    const protect = (str) => {
+        const id = placeholders.length;
+        placeholders.push(str);
+        return `{{{PH${id}}}}`;
+    };
 
     // const codeBlocks = [];
     // md = md.replace(/```(\w+)?\n([\s\S]*?)```/g, (m, lang, code) => {
@@ -23,14 +29,20 @@ export function parse(markdown = '') {
     md = md.split('\n').map(line => line).join('\n');
     // md = md.replace(/`([^`]+)`/g, (m, c) => `<code>${escapeHtml(c)}</code>`);
 
+    // Protect existing HTML tags
+    md = md.replace(/<[^>]+>/g, (match) => {
+        return protect(match);
+    });
+
     // Images
     md = md.replace(/!\[([^\]]*)\]\(([^)]+)\)/g, (m, alt, url) => {
-        return `<img src="${escapeHtml(url)}" alt="${escapeHtml(alt)}">`;
+        return protect(`<img src="${escapeHtml(url)}" alt="${escapeHtml(alt)}">`);
     });
 
     // Links
     md = md.replace(/\[([^\]]+)\]\(([^)]+)\)/g, (m, text, url) => {
-        return `<a href="${escapeHtml(url)}" target="_blank" rel="noopener noreferrer">${escapeHtml(text)}</a>`;
+        const linkTag = `<a href="${escapeHtml(url)}" target="_blank" rel="noopener noreferrer">`;
+        return protect(linkTag) + escapeHtml(text) + protect('</a>');
     });
 
     // Headings
@@ -63,13 +75,13 @@ export function parse(markdown = '') {
     // Unordered list
     md = md.replace(/((?:^|\n)[ \t]*[-+*] .+(?:\n[ \t]*[-+*] .+)*)/gm, (block) => {
         // Trim leading newline if present
-        const trimmed = block.replace(/^\n/, '').replace(/\n$/,'');
+        const trimmed = block.replace(/^\n/, '').replace(/\n$/, '');
         const items = trimmed.split(/\n/).map(line => line.replace(/^[ \t]*[-+*] /, '').trim());
         return '\n' + '<ul>' + items.map(i => `\n  <li>${i}</li>`).join('') + '\n</ul>' + '\n';
     });
     // Ordered list
     md = md.replace(/((?:^|\n)[ \t]*\d+\. .+(?:\n[ \t]*\d+\. .+)*)/gm, (block) => {
-        const trimmed = block.replace(/^\n/, '').replace(/\n$/,'');
+        const trimmed = block.replace(/^\n/, '').replace(/\n$/, '');
         const items = trimmed.split(/\n/).map(line => line.replace(/^[ \t]*\d+\. /, '').trim());
         return '\n' + '<ol>' + items.map(i => `\n  <li>${i}</li>`).join('') + '\n</ol>' + '\n';
     });
@@ -102,6 +114,12 @@ export function parse(markdown = '') {
     //   const cls = cb.lang ? ` class="language-${escapeHtml(cb.lang)}"` : '';
     //   return `<pre><code${cls}>${escaped}</code></pre>`;
     // });
+
+    // Restore placeholders
+    placeholders.forEach((ph, i) => {
+        // Replace all occurrences just in case, though we expect one per ID
+        md = md.split(`{{{PH${i}}}}`).join(ph);
+    });
 
     return md.trim();
 }
