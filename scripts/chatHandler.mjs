@@ -281,6 +281,6 @@ export default class ChatHandler {
                 document.querySelector(`[data-message-id="${e.id}"]`)?.classList?.add("added");
             }
         });
-        return ui.notifications.info("대화 플래그 수정이 완료되었습니다.");
+        return fixEveryMessages ? ui.notifications.info("대화 플래그 수정이 완료되었습니다.") : null;
     }
 }

@@ -2,7 +2,7 @@
     "id": "mrkb-chat-enhancements",
     "title": "MRKB's Chat Enhancements",
     "description": "<p>MRKB's Foundry VTT Chat Enhancements</p>",
-    "version": "1.4.0",
+    "version": "1.4.1",
     "compatibility": {
         "minimum": "13",
         "verified": "13.351"
