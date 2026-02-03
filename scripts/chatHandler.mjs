@@ -225,6 +225,8 @@ export default class ChatHandler {
     }
     static fixChatFlag(fixEveryMessages = false) {
         if (game.messages.size === 0) return;
+        if (!game.user.isActiveGM) return;
+
         const messages = game.messages.contents;
         const startIndex = fixEveryMessages ? 0 : Math.max(0, messages.length - 51);
         const msgs = messages.slice(startIndex);

@@ -34,9 +34,8 @@ Hooks.on("chatMessage", (chatLog, message, sender) => ChatHandler.chatProcessor(
 Hooks.on("preCreateChatMessage", (message, source, options, id) => ChatHandler.preProcesser(message, source, options, id));
 Hooks.on("createChatMessage", (message, option, id) => ChatHandler.createProcesser(message, option, id));
 Hooks.on("renderChatMessageHTML", (message, html, data) => ChatHandler.renderProcesser(message, html, data));
-Hooks.on("deleteChatMessage", (message) => ChatHandler.fixChatFlag(message));
+Hooks.on("deleteChatMessage", ChatHandler.fixChatFlag);
 Hooks.on("getChatMessageContextOptions", (chatLog, options) => {
-    console.log(options);
     const editOption = {
         name: game.i18n.localize("MRKB.Edit"),
         icon: '<i class="fa-solid fa-pen-to-square"></i>',
