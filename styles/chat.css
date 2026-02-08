@@ -21,10 +21,7 @@
 }
 
 .chat-message.message {
-    flex: none;
-    position: relative;
-    display: flex;
-    flex-direction: column;
+    position: static;
     font-size: var(--font-size);
     background: var(--color-background);
     backdrop-filter: blur(4px);
@@ -33,6 +30,7 @@
     border-radius: 0;
     box-shadow: none;
     margin: 0 4px;
+    transform: none!important;
 }
 .chat-message.message:not(.added) {
     padding: 4px 8px 2px 8px;
@@ -165,7 +163,7 @@
     font-family: var(--gothic-regular), sans-serif;
     font-size: var(--font-size);
     text-indent: 0;
-    line-height: 140%;
+    line-height: 150%;
     word-break: break-all;
     color: var(--color-text-secondary);
     padding: 0;
