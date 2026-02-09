@@ -1,3 +1,8 @@
+.chat-log {
+    display: flex;
+    flex-direction: column;
+}
+
 .themed.theme-light .chat-message {
     --color-text-primary: var(--color-dark-1);
     --color-text-secondary: var(--color-dark-2);
@@ -21,7 +26,7 @@
 }
 
 .chat-message.message {
-    position: static;
+    flex: none;
     font-size: var(--font-size);
     background: var(--color-background);
     backdrop-filter: blur(4px);

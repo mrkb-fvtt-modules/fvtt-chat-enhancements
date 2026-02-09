@@ -217,8 +217,11 @@ export default class ChatHandler {
         const added = message.getFlag("mrkb-chat-enhancements", "added");
         const isAuthor = message.isAuthor;
 
-        html.dataset.order = order ?? "null";
         html.classList.add(type ?? "normal");
+        if (order || order === 0) {
+            html.dataset.order = order;
+            html.style.order = order;
+        }
 
         if (added && Setting.get("chat-merge")) html.classList.add("added");
         if (isAuthor) html.classList.add("self");
