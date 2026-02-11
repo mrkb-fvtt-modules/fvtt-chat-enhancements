@@ -8,16 +8,12 @@
 @import "./tooltip.css";
 @import "./typingAlert.css";
 
-html{
-    --gothic-regular: 'NEXON Lv1 Gothic OTF', serif;
-    --gothic-bold: 'NEXON Lv1 Gothic OTF Bold', serif;
-    --gothic-extra: 'Black Han Sans', serif;
+body {
+    --gothic-regular: 'NEXON Lv1 Gothic OTF', "Hiragino Kaku Gothic ProN", "Calibri", var(--font-sans), sans-serif;
+    --gothic-bold: 'NEXON Lv1 Gothic OTF Bold', "Hiragino Kaku Gothic ProN", "Calibri", var(--font-sans), sans-serif;
 
-    --mingjo-regular: "DNFForgedBlade", serif;
-    --mingjo-bold: "DNFForgedBladeBold", serif;
-
-    --handwrite-regular: "CHOGOONChickenScratchV2-Medium", serif;
-    --handwrite-bold: "KCCImkwontaek", serif;
+    --mingjo-regular: "DNFForgedBlade", "Hiragino Mincho ProN", "Times New Roman", var(--font-serif), serif;
+    --mingjo-bold: "DNFForgedBladeBold", "Hiragino Mincho ProN", "Times New Roman Bold", var(--font-serif), serif;
 
     --font-size: 14px;
 

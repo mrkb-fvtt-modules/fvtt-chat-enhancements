@@ -1,61 +1,95 @@
-@import url("https://font.elice.io/css?family=Elice+Digital+Coding");
-@import url('https://fonts.googleapis.com/css?family=Black+Han+Sans:400');
-@import url('https://fonts.googleapis.com/css?family=Black+Han+Sans&display=swap&subset=korean');
-
-@import url('https://cdn.jsdelivr.net/npm/galmuri@latest/dist/galmuri.css');
-@import url('https://cdn.jsdelivr.net/npm/galmuri@latest/dist/galmuri.css');
-
+/* Latin & Korean */
+/* Sans-serif */
 @font-face {
     font-family: 'NEXON Lv1 Gothic OTF';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXON Lv1 Gothic OTF.woff') format('woff');
+    src: url('../assets/fonts/NEXON Lv1 Gothic OTF.woff') format('woff');
     font-weight: normal;
     font-style: normal;
+    unicode-range: U+0020-007F, U+AC00-D7A3, U+1100-11FF;
 }
 @font-face {
     font-family: 'NEXON Lv1 Gothic OTF Bold';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXON Lv1 Gothic OTF Bold.woff') format('woff');
+    src: url('../assets/fonts/NEXON Lv1 Gothic OTF Bold.woff') format('woff');
     font-weight: normal;
     font-style: normal;
+    unicode-range: U+0020-007F, U+AC00-D7A3, U+1100-11FF;
 }
+/* Serif */
 @font-face{
     font-family:'DNFForgedBlade';
-    src:url('//cdn.df.nexon.com/img/common/font/DNFForgedBlade-Light.otf') format('opentype');
+    src:url('../assets/fonts/DNFForgedBlade-Light.otf') format('opentype');
     font-style:normal;
     font-weight:500;
+    unicode-range: U+0020-007F, U+AC00-D7A3, U+1100-11FF;
 }
 @font-face{
     font-family:'DNFForgedBladeBold';
-    src:url('//cdn.df.nexon.com/img/common/font/DNFForgedBlade-Bold.otf') format('opentype');
+    src:url('../assets/fonts/DNFForgedBlade-Bold.otf') format('opentype');
     font-style:normal;
     font-weight:700;
+    unicode-range: U+0020-007F, U+AC00-D7A3, U+1100-11FF;
 }
+
+/* Japanese */
+/* Sans-serif */
 @font-face {
-    font-family: 'CHOGOONChickenScratchV2-Medium';
-    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2406-1@1.0/CHOGOONChickenScratchV2-Medium.woff2') format('woff2');
-    font-weight: normal;
+    font-family: 'Hiragino Kaku Gothic ProN';
     font-style: normal;
+    font-weight: 300;
+    src: url('../assets/fonts/Hiragino Kaku Gothic ProN W3.otf') format('opentype');
+    unicode-range: U+3040-309F, U+30A0-30FF, U+4E00-9FFF;
 }
 @font-face {
-    font-family: 'KCCImkwontaek';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2202@1.0/KCCImkwontaek.woff') format('woff');
-    font-weight: normal;
+    font-family: 'Hiragino Kaku Gothic ProN';
     font-style: normal;
+    font-weight: 600;
+    src: url('../assets/fonts/Hiragino Kaku Gothic ProN W6.otf') format('opentype');
+    unicode-range: U+3040-309F, U+30A0-30FF, U+4E00-9FFF;
 }
+/* Serif */
 @font-face {
-    font-family: 'ROEHOE-CHAN';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-10@1.0/ROEHOE-CHAN.woff') format('woff');
-    font-weight: normal;
+    font-family: 'Hiragino Mincho ProN';
     font-style: normal;
+    font-weight: 300;
+    src: url('../assets/fonts/Hiragino Mincho ProN W3.otf') format('opentype');
+    unicode-range: U+3040-309F, U+30A0-30FF, U+4E00-9FFF;
 }
 @font-face {
-    font-family: 'MYArirang-Medium';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2206-02@1.0/MYArirang-Medium.woff2') format('woff2');
-    font-weight: normal;
+    font-family: 'Hiragino Mincho ProN';
     font-style: normal;
+    font-weight: 600;
+    src: url('../assets/fonts/Hiragino Mincho ProN W6.otf') format('opentype');
+    unicode-range: U+3040-309F, U+30A0-30FF, U+4E00-9FFF;
+}
+
+/* Cyrillic */
+/* Sans-serif */
+@font-face {
+    font-family: 'Calibri';
+    font-style: normal;
+    font-weight: 400;
+    src: url('../assets/fonts/calibri-regular.ttf') format('truetype');
+    unicode-range: U+0400-04FF;
 }
 @font-face {
-    font-family: 'EliceDigitalBaeum_Bold';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_220508@1.0/EliceDigitalBaeum_Bold.woff2') format('woff2');
+    font-family: 'Calibri';
+    font-style: normal;
     font-weight: 700;
-    font-style: normal;
+    src: url('../assets/fonts/calibri-regular.ttf') format('truetype');
+    unicode-range: U+0400-04FF;
+}
+/* Serif */
+@font-face{
+    font-family:'Times New Roman';
+    src:url('../assets/fonts/timesnrcyrmt.ttf') format('truetype');
+    font-style:normal;
+    font-weight:400;
+    unicode-range: U+0400-04FF;
+}
+@font-face{
+    font-family:'Times New Roman Bold';
+    src:url('../assets/fonts/timesnrcyrmt_bold.ttf') format('truetype');
+    font-style:normal;
+    font-weight:700;
+    unicode-range: U+0400-04FF;
 }
