@@ -4,7 +4,7 @@
 
 A small Foundry VTT module that improves chat usability with message editing, actor selection without tokens, chat merging, portrait display options, export features, turn notifications, inline Markdown, actor favorites, typing indicators, and several convenience tools.
 
-Version: 1.3.0
+Version: 1.4.4
 Compatibility: Foundry VTT v13+ (verified: 13.351)
 
 ## Overview
@@ -81,7 +81,7 @@ Configure the module from Foundry's Module Settings (Settings → Manage Modules
 
 메시지 편집, 토큰 없이 액터 선택, 채팅 병합, 초상화 표시 옵션, 내보내기 기능, 턴 알림, 인라인 마크다운, 액터 즐겨찾기, 입력 중 표시(타이핑 인디케이터) 및 여러 가지 편의 설정을 포함한 채팅 사용성을 개선하는 작은 Foundry VTT 모듈입니다.
 
-버전: 1.3.0
+버전: 1.4.4
 호환성: Foundry VTT v13 이상 (검증: 13.351)
 
 ## 개요
@@ -158,7 +158,7 @@ Foundry의 모듈 설정(Settings → Manage Modules → MRKB Chat Enhancements)
 
 メッセージ編集、トークンなしでのアクター選択、チャットのマージ、ポートレート表示オプション、エクスポート機能、ターン通知、インラインMarkdown、アクターフェイバリット、入力中インジケータ、そしていくつかのチャット利便性設定を提供する小さなFoundry VTTモジュールです。
 
-バージョン: 1.3.0
+バージョン: 1.4.4
 互換性: Foundry VTT v13以上 (検証: 13.351)
 
 ## 概要
