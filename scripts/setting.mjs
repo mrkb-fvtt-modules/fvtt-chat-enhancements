@@ -39,6 +39,30 @@ export default class Setting {
 			default: true,
 			onChange: () => window.location.reload()
 		});
+		game.settings.register("mrkb-chat-enhancements", "colored-chat", {
+			name: "MRKB.ColoredChat",
+			hint: "MRKB.ColoredChatHint",
+			scope: "client",
+			config: true,
+			type: Boolean,
+			default: true,
+			onChange: (value) => {
+				const chatLog = ui.chat.element.querySelector(".chat-log");
+				chatLog.classList.toggle("color-applied", value);
+			}
+		});
+		game.settings.register("mrkb-chat-enhancements", "new-font", {
+			name: "MRKB.NewFont",
+			hint: "MRKB.NewFontHint",
+			scope: "client",
+			config: true,
+			type: Boolean,
+			default: true,
+			onChange: (value) => {
+				const chatLog = ui.chat.element.querySelector(".chat-log");
+				chatLog.classList.toggle("font-applied", value);
+			}
+		});
 
 		game.settings.register("mrkb-chat-enhancements", "actor-favorites", {
 			name: "액터 즐겨찾기",

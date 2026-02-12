@@ -14,9 +14,11 @@ Hooks.once("init", () => {
     if (game.system.id === "fatex") SystemSpecific.killFateXChatStyles();
 });
 Hooks.once("ready", () => {
-    ui.chat.element.querySelector(".chat-log").classList.remove("themed", "theme-light");
+    const chatLog = ui.chat.element.querySelector(".chat-log");
+    const isColoredChat = game.settings.get("mrkb-chat-enhancements", "colored-chat");
+    if (isColoredChat) chatLog.classList.remove("themed", "theme-light");
 });
-Hooks.on("renderAbstractSidebarTab", (tab, html) => {
+Hooks.on("renderAbstractSidebarTab", (tab) => {
     if (tab.id === "chat") {
         ActorControl.initialize();
         ChatEditor.initialize();
@@ -25,6 +27,14 @@ Hooks.on("renderAbstractSidebarTab", (tab, html) => {
         TypingAlert.initialize();
         TypingAlert.clearOldTypingAlerts();
         TypingAlert.startClearingInterval();
+
+        const isColoredChat = game.settings.get("mrkb-chat-enhancements", "colored-chat");
+        const isNewFont = game.settings.get("mrkb-chat-enhancements", "new-font");
+
+        const chatLog = tab.element.querySelector(".chat-log");
+        if (!chatLog) return;
+        if (isColoredChat) chatLog.classList.add("color-applied");
+        if (isNewFont) chatLog.classList.add("font-applied");
     }
 });
 Hooks.on("combatTurnChange", (combatData) => {

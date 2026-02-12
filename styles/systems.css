@@ -1,15 +1,15 @@
 /* DND5E */
-.system-dnd5e .chat-message.message::before,
-.system-dnd5e .chat-message .message-header .message-portrait {
+.system-dnd5e .chat-log.color-applied .chat-message.message::before,
+.system-dnd5e .chat-message.message .message-header .message-portrait {
     display: none;
 }
-.system-dnd5e .chat-message .message-header .message-sender {
+.system-dnd5e .chat-message.message .message-header .message-sender {
     height: auto;
     flex-direction: row;
 }
 
 /* SWADE */
-.swade.chat-card.item-card .card-header h3,
-.swade.chat-card.item-card .card-header h3:hover {
+.swade .chat-log.color-applied .chat-message.message .chat-card.item-card .card-header h3,
+.swade .chat-log.color-applied .chat-message.message .chat-card.item-card .card-header h3:hover {
     color: var(--color-text-primary);
 }
